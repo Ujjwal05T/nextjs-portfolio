@@ -50,25 +50,25 @@ export default function ContactPage() {
     {
       name: "Email",
       icon: <FaEnvelope size={20} />,
-      href: "mailto:your.email@example.com",
+      href: "mailto:utamrakar3@gmail.com",
       color: "from-yellow-500 to-red-500",
     },
     {
       name: "LinkedIn",
       icon: <FaLinkedin size={20} />,
-      href: "https://linkedin.com/in/yourusername",
+      href: "http://www.linkedin.com/in/ujjwal-tamrakar",
       color: "from-blue-500 to-blue-700",
     },
     {
       name: "GitHub",
       icon: <FaGithub size={20} />,
-      href: "https://github.com/yourusername",
+      href: "https://github.com/Ujjwal05T",
       color: "from-zinc-400 to-zinc-700",
     },
     {
       name: "Twitter",
       icon: <FaTwitter size={20} />,
-      href: "https://twitter.com/yourusername",
+      href: "https://twitter.com/TamrkarUjjwal",
       color: "from-sky-400 to-blue-600",
     },
   ];

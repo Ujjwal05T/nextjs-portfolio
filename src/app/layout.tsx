@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Ujjwal Tamrakar | Full Stack Developer",
+    default: "Ujjwal Tamrakar | Portfolio",
     template: "%s | Ujjwal Tamrakar"
   },
   description: "Portfolio of Ujjwal Tamrakar - Full Stack Developer specializing in React, Next.js, Node.js, and Java. Creating exceptional web experiences with modern technologies.",
@@ -58,24 +58,32 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://www.devujjwal.tech",
-    title: "Ujjwal Tamrakar",
+    title: "Ujjwal Tamrakar | Portfolio",
     description: "Portfolio of Ujjwal Tamrakar - Full Stack Developer specializing in React, Next.js, Node.js, and Java. Creating exceptional web experiences with modern technologies.",
     siteName: "Ujjwal Tamrakar Portfolio",
-    images: [
-      {
-        url: "https://your-domain.com/og-image.jpg", // Create and upload this image
-        width: 1200,
-        height: 630,
-        alt: "Ujjwal Tamrakar - Full Stack Developer",
-      },
-    ],
+    // images: [
+    //   {
+    //     url: "https://your-domain.com/og-image.jpg", // Create and upload this image
+    //     width: 1200,
+    //     height: 630,
+    //     alt: "Ujjwal Tamrakar - Full Stack Developer",
+    //   },
+    // ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ujjwal Tamrakar",
+    title: "Ujjwal Tamrakar | Portfolio",
     description: "Portfolio of Ujjwal Tamrakar - Full Stack Developer specializing in React, Next.js, Node.js, and Java.",
-    images: ["https://your-domain.com/twitter-image.jpg"], // Create and upload this image
     creator: "@TamrkarUjjwal", // If you have one
+  },
+  icons: {
+    icon: [
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
 };
 

@@ -7,6 +7,7 @@ import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
 
 // Define project types
 type Technology = {
@@ -31,72 +32,38 @@ export default function ProjectsPage() {
     {
       title: "Portfolio Website",
       description: "A modern portfolio with Next.js, Three.js, and Tailwind CSS.",
-      image: "/images/1305785.jpg",
+      image: "/images/Screenshot 2025-03-19 111916.png",
       technologies: [
         { name: "Next.js", color: "#ffffff" },
         { name: "React", color: "#61DAFB" },
         { name: "Three.js", color: "#049EF4" },
       ],
-      githubUrl: "https://github.com/yourusername/portfolio",
-      demoUrl: "https://yourportfolio.com",
+      githubUrl: "https://github.com/Ujjwal05T/next-portfolio",
+      demoUrl: "https://www.devujjwal.tech",
     },
     {
-      title: "E-commerce Platform",
-      description: "Full-stack e-commerce with auth and payments.",
-      image: "/images/1305785.jpg",
+      title: "SOC Placement Portal",
+      description: "Placement portal for students to apply for jobs.",
+      image: "/images/Screenshot 2024-11-26 210347.png",
       technologies: [
         { name: "React", color: "#61DAFB" },
-        { name: "Node.js", color: "#539E43" },
-        { name: "MongoDB", color: "#47A248" },
+        { name: "Spring Boot", color: "#539E43" },
+        { name: "PostgreSQL", color: "#2675B6" },
       ],
-      githubUrl: "https://github.com/yourusername/ecommerce",
-      demoUrl: "https://your-ecommerce.com",
+      githubUrl: "https://github.com/Ujjwal05T/Minor-Project/tree/main/placementPortal",
+      demoUrl: "https://my-placement-portal.vercel.app/",
     },
     {
-      title: "Task Management",
-      description: "Drag-and-drop task app with real-time updates.",
-      image: "/images/1305785.jpg",
+      title: "To-DO List",
+      description: "Basic To-Do list app with React and Tailwind CSS.",
+      image: "/images/Screenshot 2025-03-19 132542.png",
       technologies: [
         { name: "React", color: "#61DAFB" },
-        { name: "Firebase", color: "#FFCA28" },
-        { name: "Redux", color: "#764ABC" },
+        { name: "TailwindCSS", color: "#FFCA28" },
+        { name: "Context API", color: "#764ABC" },
       ],
-      githubUrl: "https://github.com/yourusername/task-manager",
-    },
-    {
-      title: "Weather Dashboard",
-      description: "Weather app with external API integration.",
-      image: "/images/1305785.jpg",
-      technologies: [
-        { name: "JavaScript", color: "#F7DF1E" },
-        { name: "CSS3", color: "#1572B6" },
-        { name: "Chart.js", color: "#FF6384" },
-      ],
-      githubUrl: "https://github.com/yourusername/weather-dashboard",
-      demoUrl: "https://your-weather-app.com",
-    },
-    {
-      title: "AI Image Generator",
-      description: "Generate images with AI models.",
-      image: "/images/1305785.jpg",
-      technologies: [
-        { name: "Python", color: "#3776AB" },
-        { name: "TensorFlow", color: "#FF6F00" },
-        { name: "React", color: "#61DAFB" },
-      ],
-      githubUrl: "https://github.com/yourusername/ai-image-gen",
-      demoUrl: "https://ai-image-gen.com",
-    },
-    {
-      title: "Chat Application",
-      description: "Real-time chat with websockets.",
-      image: "/images/1305785.jpg",
-      technologies: [
-        { name: "React", color: "#61DAFB" },
-        { name: "Socket.io", color: "#ffffff" },
-        { name: "Express", color: "#000000" },
-      ],
-      githubUrl: "https://github.com/yourusername/chat-app",
+      githubUrl: "https://github.com/Ujjwal05T/Todolist",
+      demoUrl: "https://todolist-hazel-eight.vercel.app/",
     },
   ];
 
@@ -148,11 +115,13 @@ export default function ProjectsPage() {
               <div className="sm:hidden bg-zinc-900/90 backdrop-blur-sm border border-zinc-800 rounded-xl overflow-hidden flex flex-col">
                 {/* Project image - Fixed height to ensure consistency */}
                 <div className="w-full aspect-[16/9] overflow-hidden">
-                  <img 
+                  <Image 
                     src={project.image} 
                     alt={project.title}
+                    width={600}
+                    height={338}
                     className="w-full h-full object-cover object-center"
-                    loading="lazy"
+                    priority={index < 3}
                   />
                 </div>
                 
@@ -209,17 +178,19 @@ export default function ProjectsPage() {
               
               {/* Medium and larger screens: 3D card effect */}
               <CardContainer className="h-full hidden sm:block">
-                <CardBody className="bg-zinc-900/90 backdrop-blur-sm border border-zinc-800 rounded-xl overflow-hidden group hover:border-zinc-600 transition-all h-full flex flex-col relative">
+                <CardBody className="bg-zinc-900/60 backdrop-blur-sm border border-zinc-800 rounded-xl overflow-hidden group hover:border-zinc-600 transition-all h-full flex flex-col relative">
                   {/* Project image */}
                   <CardItem
                     translateZ={50}
                     className="w-full aspect-[16/9] overflow-hidden"
                   >
-                    <img 
+                    <Image 
                       src={project.image} 
                       alt={project.title}
+                      width={600}
+    height={338}
                       className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
-                      loading="lazy"
+                      priority={index < 3}
                     />
                   </CardItem>
                   

@@ -6,11 +6,11 @@ import { MdEmail } from "react-icons/md";
 
 export function FloatingSocialBar() {
   const socialLinks = [
-    { icon: <FaGithub />, url: "https://github.com/yourusername", label: "GitHub" },
-    { icon: <FaLinkedin />, url: "https://linkedin.com/in/yourusername", label: "LinkedIn" },
-    { icon: <FaTwitter />, url: "https://twitter.com/yourusername", label: "Twitter" },
-    { icon: <MdEmail />, url: "mailto:your.email@example.com", label: "Email" },
-    { icon: <FaInstagram />, url: "https://instagram.com/yourusername", label: "Instagram" },
+    { icon: <FaGithub />, url: "https://github.com/Ujjwal05T", label: "GitHub" },
+    { icon: <FaLinkedin />, url: "http://www.linkedin.com/in/ujjwal-tamrakar", label: "LinkedIn" },
+    { icon: <FaTwitter />, url: "https://twitter.com/TamrkarUjjwal", label: "Twitter" },
+    { icon: <MdEmail />, url: "mailto:utamrakar3@gmail.com", label: "Email" },
+    { icon: <FaInstagram />, url: "https://instagram.com/tamrakar_ujjwal_05", label: "Instagram" },
   ];
 
   return (
