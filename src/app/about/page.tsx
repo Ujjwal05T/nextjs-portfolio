@@ -78,7 +78,7 @@ export default function AboutPage() {
               transition={{ delay:  0.9 }}>
               Throughout my journey, I&apos;ve focused on building solutions that
               solve real problems while paying attention to the details that
-              make applications stand out. I'm constantly learning and exploring
+              make applications stand out. I&apos;m constantly learning and exploring
               new technologies to expand what I can create.
             </motion.p>
 

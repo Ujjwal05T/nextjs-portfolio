@@ -26,22 +26,30 @@ export default function ContactPage() {
     e.preventDefault();
     setIsSubmitting(true);
     
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json',
+        },
+      });
       
-      setSubmitStatus("success");
-      setFormData({ name: "", email: "", message: "" });
+      if (response.ok) {
+        setSubmitStatus("success");
+        form.reset();
+      } else {
+        setSubmitStatus("error");
+      }
     } catch (error) {
       console.error("Error submitting form:", error);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
-      
-      // Reset status after a delay
-      setTimeout(() => {
-        setSubmitStatus("idle");
-      }, 5000);
+      setTimeout(() => setSubmitStatus("idle"), 5000);
     }
   };
 
@@ -134,7 +142,10 @@ export default function ContactPage() {
           >
             <h2 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6">Send Me a Message</h2>
             
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} 
+            action="https://formspree.io/f/xdkeaawn" 
+            method="POST"
+            className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-zinc-400 mb-1">

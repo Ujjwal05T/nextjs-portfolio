@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Portfolio
+
+This project is a personal portfolio website built using [Next.js](https://nextjs.org/), a React-based framework that enables server-side rendering and static site generation. The portfolio showcases projects, skills, and experiences in a clean and responsive design.
+
+## Features
+
+- **Server-Side Rendering**: Ensures fast load times and improved SEO.
+- **Static Site Generation**: Pre-renders pages at build time for optimal performance.
+- **Responsive Design**: Adapts to various screen sizes for a seamless user experience.
+- **Modern Styling**: Utilizes [Tailwind CSS](https://tailwindcss.com/) for efficient and customizable styling.
+- **Animations**: Incorporates [Framer Motion](https://www.framer.com/motion/) for smooth animations and interactive elements.
 
 ## Getting Started
 
-First, run the development server:
+To run this project locally, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. **Clone the repository**:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   ```bash
+   git clone https://github.com/Ujjwal05T/nextjs-portfolio.git
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. **Navigate to the project directory**:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   ```bash
+   cd nextjs-portfolio
+   ```
+
+3. **Install dependencies**:
+
+   Using npm:
+
+   ```bash
+   npm install
+   ```
+
+   Or using yarn:
+
+   ```bash
+   yarn install
+   ```
+
+4. **Start the development server**:
+
+   Using npm:
+
+   ```bash
+   npm run dev
+   ```
+
+   Or using yarn:
+
+   ```bash
+   yarn dev
+   ```
+
+5. **Open the application**:
+
+   Visit [http://localhost:3000](http://localhost:3000) in your browser to view the portfolio.
+
+## Deployment
+
+The portfolio is deployed and accessible at: [https://nextjs-portfolio-ujjwal05t.vercel.app/](https://nextjs-portfolio-ujjwal05t.vercel.app/)
+
+To deploy your own version:
+
+1. **Create a Vercel account**: Sign up at [Vercel](https://vercel.com/).
+2. **Import the project**: Connect your GitHub repository to Vercel.
+3. **Configure settings**: Set up build and environment settings as needed.
+4. **Deploy**: Trigger a deployment from the Vercel dashboard.
+
+For detailed deployment instructions, refer to the [Next.js Deployment Documentation](https://nextjs.org/docs/deployment).
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about the technologies used in this project, check out the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js Documentation](https://nextjs.org/docs): Learn about Next.js features and API.
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs): Explore utility-first CSS for rapid UI development.
+- [Framer Motion Documentation](https://www.framer.com/motion/): Discover declarative animations and interactions for React.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Acknowledgements
 
-## Deploy on Vercel
+This project was inspired by various portfolio designs and tutorials available in the developer community. Special thanks to the contributors of open-source tools and libraries that made this project possible.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Copyright
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+© 2025 Ujjwal05T. All rights reserved.

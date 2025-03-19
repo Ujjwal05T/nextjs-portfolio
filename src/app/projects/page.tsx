@@ -38,7 +38,7 @@ export default function ProjectsPage() {
         { name: "React", color: "#61DAFB" },
         { name: "Three.js", color: "#049EF4" },
       ],
-      githubUrl: "https://github.com/Ujjwal05T/next-portfolio",
+      githubUrl: "https://github.com/Ujjwal05T/nextjs-portfolio",
       demoUrl: "https://www.devujjwal.tech",
     },
     {
