@@ -146,7 +146,7 @@ export default function Header() {
             {/* Social links in mobile menu (optional) */}
             <div className="mt-12 flex gap-4">
               <a
-                href="https://github.com/yourusername"
+                href="https://github.com/Ujjwal05T"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-zinc-400 hover:text-white transition-colors"
@@ -157,7 +157,7 @@ export default function Header() {
                 </svg>
               </a>
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://linkedin.com/in/ujjwal-tamrakar"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-zinc-400 hover:text-white transition-colors"
