@@ -191,7 +191,7 @@ export function GalaxyModel() {
       {/* Light beams radiating from center */}
       {Array.from({ length: 8 }).map((_, i) => {
         const angle = (i / 8) * Math.PI * 2;
-        const height = 0.05 + Math.random() * 0.05;
+        // const height = 0.05 + Math.random() * 0.05;
         
         return (
           <mesh

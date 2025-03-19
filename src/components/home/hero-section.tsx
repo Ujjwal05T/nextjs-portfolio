@@ -54,33 +54,46 @@ export default function HeroSection() {
             Full-Stack Developer
           </motion.h2>
           
-          <div className="mt-4 sm:mt-6 max-w-2xl">
-            {/* Use a single TypewriterEffect with full text - it will naturally wrap on smaller screens */}
+            <div className="mt-4 sm:mt-6 max-w-2xl">
             <TypewriterEffect 
-              words="I build responsive and scalable web applications with cutting-edge technologies. Specializing in modern JavaScript frameworks and cloud solutions." 
+              words="I build innovative full stack web solutions using modern frameworks and cloud technologies." 
             />
-          </div>
+            </div>
           
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 3 }}
-            className="mt-6 sm:mt-10 flex flex-wrap gap-3 sm:gap-4"
-          >
-            <Link 
-              href="/projects"
-              className="px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base rounded-md bg-zinc-800 border border-zinc-700 text-white hover:bg-zinc-700 transition-colors"
-            >
-              View My Work
-            </Link>
-            
-            <Link 
-              href="/contact"
-              className="px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base rounded-md border border-zinc-700 text-white hover:bg-zinc-800/50 transition-colors"
-            >
-              Contact Me
-            </Link>
-          </motion.div>
+            <motion.div 
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 3 }}
+  className="mt-6 sm:mt-10 flex flex-wrap gap-4"
+>
+  {/* Primary Button - View My Work */}
+  <Link 
+    href="/projects"
+   className="group relative px-5 py-3 sm:px-6 sm:py-3.5 overflow-hidden rounded-lg bg-transparent border border-zinc-700 text-sm sm:text-base font-medium text-white transition-all duration-300 hover:border-blue-400/60 hover:text-blue-100 hover:shadow-[0_0_15px_rgba(59,130,246,0.15)] hover:scale-[1.02] active:scale-[0.98]"
+  >
+    <span className="relative z-10 flex items-center">
+      View My Work
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1.5 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+      </svg>
+    </span>
+    <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-blue-500 to-indigo-600 group-hover:w-full transition-all duration-300"></span>
+  </Link>
+  
+  {/* Secondary Button - Contact Me */}
+  <Link 
+    href="/contact"
+    className="group relative px-5 py-3 sm:px-6 sm:py-3.5 overflow-hidden rounded-lg bg-transparent border border-zinc-700 text-sm sm:text-base font-medium text-white transition-all duration-300 hover:border-blue-400/60 hover:text-blue-100 hover:shadow-[0_0_15px_rgba(59,130,246,0.15)] hover:scale-[1.02] active:scale-[0.98]"
+  >
+    <span className="relative z-10 flex items-center">
+      Contact Me
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1.5 opacity-70 group-hover:opacity-100 transform group-hover:translate-x-1 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+    </span>
+    <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-blue-500 to-indigo-600 group-hover:w-full transition-all duration-300"></span>
+  </Link>
+</motion.div>
         </motion.div>
         
         {/* 3D object - use CSS-based responsive approach */}

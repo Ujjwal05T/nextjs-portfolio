@@ -2,14 +2,16 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { FaReact, FaNodeJs, FaGitAlt, FaDocker, FaAws } from "react-icons/fa";
+import { FaReact, FaNodeJs, FaGitAlt, FaDocker, FaGithub, FaJava } from "react-icons/fa";
 import { SiNextdotjs, SiExpress, SiSpringboot, SiTailwindcss, SiTypescript, SiJavascript, SiMongodb, SiPostgresql } from "react-icons/si";
 import { cn } from "@/lib/utils";
 
 const technologies = [
   { name: "React", icon: <FaReact />, color: "#61DAFB", category: "frontend" },
   { name: "Next.js", icon: <SiNextdotjs />, color: "#FFFFFF", category: "frontend" },
+  { name: "React Native", icon: <FaReact />, color: "#61DAFB", category: "mobile" }, // Using FaReact icon as it's the official logo
   { name: "Node.js", icon: <FaNodeJs />, color: "#539E43", category: "backend" },
+  { name: "Java", icon: <FaJava />, color: "#ED8B00", category: "backend" }, // Added Java
   { name: "Express", icon: <SiExpress />, color: "#FFFFFF", category: "backend" },
   { name: "Spring Boot", icon: <SiSpringboot />, color: "#6DB33F", category: "backend" },
   { name: "TypeScript", icon: <SiTypescript />, color: "#3178C6", category: "frontend" },
@@ -18,8 +20,8 @@ const technologies = [
   { name: "MongoDB", icon: <SiMongodb />, color: "#47A248", category: "database" },
   { name: "PostgreSQL", icon: <SiPostgresql />, color: "#336791", category: "database" },
   { name: "Git", icon: <FaGitAlt />, color: "#F05032", category: "devops" },
+  { name: "GitHub", icon: <FaGithub />, color: "#FFFFFF", category: "devops" },
   { name: "Docker", icon: <FaDocker />, color: "#2496ED", category: "devops" },
-  { name: "AWS", icon: <FaAws />, color: "#FF9900", category: "devops" }
 ];
 
 export default function TechStackSection() {

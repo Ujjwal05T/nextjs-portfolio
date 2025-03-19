@@ -9,7 +9,8 @@ export function FloatingSocialBar() {
     { icon: <FaGithub />, url: "https://github.com/yourusername", label: "GitHub" },
     { icon: <FaLinkedin />, url: "https://linkedin.com/in/yourusername", label: "LinkedIn" },
     { icon: <FaTwitter />, url: "https://twitter.com/yourusername", label: "Twitter" },
-    { icon: <MdEmail />, url: "mailto:your.email@example.com", label: "Email" }
+    { icon: <MdEmail />, url: "mailto:your.email@example.com", label: "Email" },
+    { icon: <FaInstagram />, url: "https://instagram.com/yourusername", label: "Instagram" },
   ];
 
   return (
@@ -17,7 +18,7 @@ export function FloatingSocialBar() {
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 1 }}
-      className="fixed left-4 bottom-1/3 z-10 hidden md:flex flex-col gap-5"
+      className="fixed left-4 bottom-1/4 z-10 hidden md:flex flex-col gap-5"
     >
       {socialLinks.map((link, i) => (
         <motion.a

@@ -9,6 +9,7 @@ import React, {
   useEffect,
 } from "react";
 
+// Updated context type to be more specific
 const MouseEnterContext = createContext<
   [boolean, React.Dispatch<React.SetStateAction<boolean>>, boolean] | undefined
 >(undefined);
@@ -25,9 +26,12 @@ export const CardContainer = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMouseEntered, setIsMouseEntered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   
-  // Check if we're on mobile device
+  // Check if we're on mobile device and handle hydration safely
   useEffect(() => {
+    setIsMounted(true);
+    
     const checkMobile = () => {
       setIsMobile(window.matchMedia("(max-width: 768px)").matches);
     };
@@ -38,7 +42,7 @@ export const CardContainer = ({
   }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current || isMobile) return;
+    if (!containerRef.current || isMobile || !isMounted) return;
     
     const { left, top, width, height } =
       containerRef.current.getBoundingClientRect();
@@ -48,18 +52,17 @@ export const CardContainer = ({
   };
 
   const handleMouseEnter = () => {
-    if (!isMobile) {
+    if (!isMobile && isMounted) {
       setIsMouseEntered(true);
     }
   };
 
   const handleMouseLeave = () => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || !isMounted) return;
     setIsMouseEntered(false);
     containerRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`;
   };
 
-  // Handle touch events for mobile
   const handleTouchStart = () => {
     // Optional: Add subtle effect on touch if desired
   };
@@ -76,7 +79,7 @@ export const CardContainer = ({
           containerClassName
         )}
         style={{
-          perspective: isMobile ? "none" : "1000px",
+          perspective: (!isMounted || isMobile) ? "none" : "1000px",
         }}
       >
         <div
@@ -91,7 +94,7 @@ export const CardContainer = ({
             className
           )}
           style={{
-            transformStyle: isMobile ? "flat" : "preserve-3d",
+            transformStyle: (!isMounted || isMobile) ? "flat" : "preserve-3d",
           }}
         >
           {children}
@@ -109,15 +112,17 @@ export const CardBody = ({
   className?: string;
 }) => {
   const [, , isMobile] = useMouseEnter();
+  const [isMounted, setIsMounted] = useState(false);
+  
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   
   return (
     <div
-      className={cn(
-        "w-full [transform-style:preserve-3d] [&>*]:[transform-style:preserve-3d]",
-        className
-      )}
+      className={cn("w-full", className)}
       style={{
-        transformStyle: isMobile ? "flat" : "preserve-3d",
+        transformStyle: (!isMounted || isMobile) ? "flat" : "preserve-3d",
       }}
     >
       {children}
@@ -125,18 +130,8 @@ export const CardBody = ({
   );
 };
 
-export const CardItem = ({
-  as: Tag = "div",
-  children,
-  className,
-  translateX = 0,
-  translateY = 0,
-  translateZ = 0,
-  rotateX = 0,
-  rotateY = 0,
-  rotateZ = 0,
-  ...rest
-}: {
+// Fix typing for CardItem
+interface CardItemProps {
   as?: React.ElementType;
   children: React.ReactNode;
   className?: string;
@@ -146,17 +141,32 @@ export const CardItem = ({
   rotateX?: number | string;
   rotateY?: number | string;
   rotateZ?: number | string;
-  [key: string]: any;
-}) => {
+  // [key: string]: any; // Use 'any' to avoid type issues with rest props
+}
+
+export const CardItem = ({
+  // as: Tag = "div",
+  children,
+  className,
+  translateX = 0,
+  translateY = 0,
+  translateZ = 0,
+  rotateX = 0,
+  rotateY = 0,
+  rotateZ = 0,
+  ...rest
+}: CardItemProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isMouseEntered, , isMobile] = useMouseEnter();
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     handleAnimations();
   }, [isMouseEntered]);
 
   const handleAnimations = () => {
-    if (!ref.current) return;
+    if (!ref.current || !isMounted) return;
     
     if (isMouseEntered && !isMobile) {
       ref.current.style.transform = `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
@@ -166,13 +176,14 @@ export const CardItem = ({
   };
 
   return (
-    <Tag
+    //here was Tag
+    <div
       ref={ref}
-      className={cn("w-fit transition duration-200 ease-linear", className)}
+      className={cn("transition duration-200 ease-linear", className)}
       {...rest}
     >
       {children}
-    </Tag>
+    </div>
   );
 };
 

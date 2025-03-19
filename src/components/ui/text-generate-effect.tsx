@@ -27,7 +27,7 @@ export function TypewriterEffect({
         // Animation completed
         setTimeout(() => {
           setShowCursor(false);
-        }, 1500);
+        }, 1000);
       }
     };
 

@@ -127,7 +127,7 @@ export default function ProjectsPage() {
             My Projects
           </h1>
           <p className="mt-3 sm:mt-4 text-sm sm:text-base text-zinc-400 max-w-2xl mx-auto">
-            Explore my work and see what I've built across various technologies
+            Explore my work and see what I&apos;ve built across various technologies
           </p>
           <div className="h-1 w-16 sm:w-20 bg-zinc-700 mx-auto mt-3 sm:mt-4" />
         </motion.div>
