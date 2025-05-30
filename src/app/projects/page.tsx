@@ -30,8 +30,22 @@ export default function ProjectsPage() {
   // Sample project data - replace with your actual projects
   const projects: Project[] = [
     {
+      title: "Learnext",
+      description: "An intelligent learning platform featuring content recommendations, progress tracking, and interactive learning modules for tech skill development.",
+      image: "/images/Screenshot 2025-05-30 181446.png",
+      technologies: [
+        { name: "Next.js", color: "#ffffff" },
+        { name: "Node.js", color: "#8CC84B" },
+        { name: "MongoDB", color: "#47A248" },
+        { name: "Azure", color: "#0078D4" }, 
+        { name: "Docker", color: "#2496ED" }
+      ],
+      githubUrl: "https://github.com/Ujjwal05T/learnext",
+      demoUrl: "https://www.learnext.live",
+    },
+    {
       title: "Portfolio Website",
-      description: "A modern portfolio with Next.js, Three.js, and Tailwind CSS.",
+      description: "A responsive personal portfolio showcasing projects and skills with 3D animations, interactive UI components, and modern design patterns.",
       image: "/images/Screenshot 2025-03-19 111916.png",
       technologies: [
         { name: "Next.js", color: "#ffffff" },
@@ -43,28 +57,29 @@ export default function ProjectsPage() {
     },
     {
       title: "SOC Placement Portal",
-      description: "Placement portal for students to apply for jobs.",
+      description: "A comprehensive placement management system with student profiles, job applications, and role based authentication.",
       image: "/images/Screenshot 2024-11-26 210347.png",
       technologies: [
         { name: "React", color: "#61DAFB" },
         { name: "Spring Boot", color: "#539E43" },
         { name: "PostgreSQL", color: "#2675B6" },
+        { name: "Docker", color: "#0078D4" },
       ],
       githubUrl: "https://github.com/Ujjwal05T/Minor-Project/tree/main/placementPortal",
       demoUrl: "https://my-placement-portal.vercel.app/",
     },
     {
       title: "To-DO List",
-      description: "Basic To-Do list app with React and Tailwind CSS.",
+      description: "A feature-rich task management application with local storage persistence.",
       image: "/images/Screenshot 2025-03-19 132542.png",
       technologies: [
         { name: "React", color: "#61DAFB" },
         { name: "TailwindCSS", color: "#FFCA28" },
-        { name: "Context API", color: "#764ABC" },
+        { name: "Context API", color: "#764ABC" }
       ],
       githubUrl: "https://github.com/Ujjwal05T/Todolist",
       demoUrl: "https://todolist-hazel-eight.vercel.app/",
-    },
+    }
   ];
 
   return (
