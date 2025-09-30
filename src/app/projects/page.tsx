@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { SparklesCore } from "@/components/ui/sparkles";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
+import { GridBackground } from "@/components/ui/grid-background";
 
 // Define project types
 type Technology = {
@@ -83,20 +83,8 @@ export default function ProjectsPage() {
   ];
 
   return (
-    <div className="min-h-screen w-full relative overflow-hidden py-6 sm:py-10 md:py-16 px-4 sm:px-6 lg:px-8">
-      {/* Sparkles background only */}
-      <div className="absolute inset-0 z-0">
-        <SparklesCore
-          id="projectsparkles"
-          background="transparent"
-          minSize={0.4}
-          maxSize={1.0}
-          particleDensity={30}
-          className="w-full h-full"
-          particleColor="#FFFFFF"
-        />
-      </div>
-      
+    <div className="min-h-screen w-full relative overflow-hidden py-20 lg:py-32 px-4 sm:px-6 lg:px-8">
+      <GridBackground />
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
         <motion.div 
@@ -121,13 +109,14 @@ export default function ProjectsPage() {
               key={project.title}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 * (index % 3) }}
+              transition={{ duration: 0.6, delay: 0.12 * (index % 3) }}
               className="h-full"
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
+              whileHover={{ y: -8 }}
             >
               {/* Small screens: simplified card without 3D effect */}
-              <div className="sm:hidden bg-zinc-900/90 backdrop-blur-sm border border-zinc-800 rounded-xl overflow-hidden flex flex-col">
+              <div className="sm:hidden bg-zinc-900/90 backdrop-blur-sm border border-zinc-800 rounded-xl overflow-hidden flex flex-col shadow-lg shadow-zinc-900/50 hover:shadow-xl hover:shadow-zinc-700/30 hover:border-zinc-600 transition-all duration-300">
                 {/* Project image - Fixed height to ensure consistency */}
                 <div className="w-full aspect-[16/9] overflow-hidden">
                   <Image 
@@ -193,20 +182,21 @@ export default function ProjectsPage() {
               
               {/* Medium and larger screens: 3D card effect */}
               <CardContainer className="h-full hidden sm:block">
-                <CardBody className="bg-zinc-900/60 backdrop-blur-sm border border-zinc-800 rounded-xl overflow-hidden group hover:border-zinc-600 transition-all h-full flex flex-col relative">
+                <CardBody className="bg-zinc-900/60 backdrop-blur-sm border border-zinc-800 rounded-xl overflow-hidden group hover:border-blue-500/40 transition-all duration-500 h-full flex flex-col relative shadow-lg shadow-zinc-900/50 hover:shadow-2xl hover:shadow-blue-500/20">
                   {/* Project image */}
                   <CardItem
                     translateZ={50}
-                    className="w-full aspect-[16/9] overflow-hidden"
+                    className="w-full aspect-[16/9] overflow-hidden relative"
                   >
-                    <Image 
-                      src={project.image} 
+                    <Image
+                      src={project.image}
                       alt={project.title}
                       width={600}
     height={338}
-                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                      className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out"
                       priority={index < 3}
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </CardItem>
                   
                   {/* Project content with improved responsiveness */}

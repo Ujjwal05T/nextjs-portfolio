@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { SparklesCore } from "@/components/ui/sparkles";
 import { FaPaperPlane, FaLinkedin, FaGithub, FaTwitter, FaEnvelope } from "react-icons/fa";
+import { GridBackground } from "@/components/ui/grid-background";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -82,20 +82,8 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="min-h-screen w-full relative overflow-hidden py-10 sm:py-16 px-4 sm:px-6 lg:px-8">
-      {/* Background sparkles */}
-      <div className="absolute inset-0 z-0">
-        <SparklesCore
-          id="contactsparkles"
-          background="transparent"
-          minSize={0.4}
-          maxSize={1.0}
-          particleDensity={40}
-          className="w-full h-full"
-          particleColor="#FFFFFF"
-        />
-      </div>
-      
+    <div className="min-h-screen w-full relative overflow-hidden py-20 lg:py-32 px-4 sm:px-6 lg:px-8">
+      <GridBackground />
       <div className="relative z-10 max-w-4xl mx-auto">
         {/* Header */}
         <motion.div 
@@ -138,9 +126,12 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-5 sm:p-6 lg:w-2/3 hover:border-zinc-700 transition-colors duration-300"
+            className="relative bg-zinc-900/40 backdrop-blur-xl border border-zinc-700/50 rounded-xl p-5 sm:p-6 lg:w-2/3 hover:border-zinc-600/80 transition-all duration-500 shadow-xl shadow-zinc-900/50 hover:shadow-2xl hover:shadow-blue-500/10"
           >
-            <h2 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6">Send Me a Message</h2>
+            {/* Glassmorphism gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/20 via-transparent to-blue-900/10 rounded-xl pointer-events-none"></div>
+            <div className="relative z-10">
+            <h2 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">Send Me a Message</h2>
             
             <form onSubmit={handleSubmit} 
             action="https://formspree.io/f/xdkeaawn" 
@@ -158,7 +149,7 @@ export default function ContactPage() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-zinc-800/80 border border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:border-zinc-500 text-zinc-200 hover:border-zinc-600 transition-colors duration-200"
+                    className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-zinc-800/50 backdrop-blur-sm border border-zinc-700/70 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 text-zinc-200 hover:border-zinc-600 transition-all duration-300 focus:bg-zinc-800/70 focus:scale-[1.01]"
                     placeholder="Your name"
                   />
                 </div>
@@ -174,7 +165,7 @@ export default function ContactPage() {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-zinc-800/80 border border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:border-zinc-500 text-zinc-200 hover:border-zinc-600 transition-colors duration-200"
+                    className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-zinc-800/50 backdrop-blur-sm border border-zinc-700/70 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 text-zinc-200 hover:border-zinc-600 transition-all duration-300 focus:bg-zinc-800/70 focus:scale-[1.01]"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -191,7 +182,7 @@ export default function ContactPage() {
                   required
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-zinc-800/80 border border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:border-zinc-500 text-zinc-200 resize-none hover:border-zinc-600 transition-colors duration-200"
+                  className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-zinc-800/50 backdrop-blur-sm border border-zinc-700/70 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 text-zinc-200 resize-none hover:border-zinc-600 transition-all duration-300 focus:bg-zinc-800/70 focus:scale-[1.01]"
                   placeholder="Your message..."
                 />
               </div>
@@ -199,12 +190,12 @@ export default function ContactPage() {
               <motion.button
                 type="submit"
                 disabled={isSubmitting}
-                whileHover={!isSubmitting ? { scale: 1.02 } : {}}
-                whileTap={!isSubmitting ? { scale: 0.98 } : {}}
-                className={`w-full flex items-center justify-center px-5 py-3 sm:py-4 rounded-md text-white transition-all duration-200 ${
-                  isSubmitting 
-                    ? "bg-zinc-700 cursor-not-allowed" 
-                    : "bg-gradient-to-r from-zinc-700 to-zinc-800 hover:from-zinc-600 hover:to-zinc-700 shadow-md hover:shadow-lg"
+                whileHover={!isSubmitting ? { scale: 1.03 } : {}}
+                whileTap={!isSubmitting ? { scale: 0.96 } : {}}
+                className={`w-full flex items-center justify-center px-5 py-3 sm:py-4 rounded-lg text-white transition-all duration-300 ${
+                  isSubmitting
+                    ? "bg-zinc-700 cursor-not-allowed"
+                    : "bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 shadow-lg shadow-blue-900/30 hover:shadow-xl hover:shadow-blue-500/30"
                 }`}
               >
                 <FaPaperPlane className={`mr-2 ${isSubmitting ? 'animate-pulse' : ''}`} />
@@ -242,6 +233,7 @@ export default function ContactPage() {
                 </motion.div>
               )}
             </form>
+            </div>
           </motion.div>
           
           {/* Response time */}
@@ -249,8 +241,11 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-xl p-5 sm:p-6 lg:w-1/3 hover:border-zinc-700 transition-colors duration-300"
+            className="relative bg-zinc-900/40 backdrop-blur-xl border border-zinc-700/50 rounded-xl p-5 sm:p-6 lg:w-1/3 hover:border-zinc-600/80 transition-all duration-500 shadow-xl shadow-zinc-900/50"
           >
+            {/* Glassmorphism gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/20 via-transparent to-purple-900/10 rounded-xl pointer-events-none"></div>
+            <div className="relative z-10">
             <div className="flex flex-col h-full justify-center">
               <div className="mb-6 flex items-center">
                 <div className="mr-4 p-3 rounded-full bg-zinc-800 shadow-md">
@@ -268,9 +263,9 @@ export default function ContactPage() {
               {/* <div className="mt-8 pt-6 border-t border-zinc-800">
                 <div className="flex items-center mb-3">
                   <div className="h-10 w-10 overflow-hidden rounded-full mr-3 border-2 border-zinc-700">
-                    <img 
-                      src="/profile-photo.jpg" 
-                      alt="Profile" 
+                    <img
+                      src="/profile-photo.jpg"
+                      alt="Profile"
                       className="h-full w-full object-cover"
                       onError={(e) => {
                         (e.target as HTMLImageElement).src = "https://via.placeholder.com/100?text=Profile";
@@ -283,6 +278,7 @@ export default function ContactPage() {
                   </div>
                 </div>
               </div> */}
+            </div>
             </div>
           </motion.div>
         </div>

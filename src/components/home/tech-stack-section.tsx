@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { FaReact, FaNodeJs, FaGitAlt, FaDocker, FaGithub, FaJava } from "react-icons/fa";
 import { SiNextdotjs, SiExpress, SiSpringboot, SiTailwindcss, SiTypescript, SiJavascript, SiMongodb, SiPostgresql } from "react-icons/si";
 import { cn } from "@/lib/utils";
+import { GridBackground } from "@/components/ui/grid-background";
 
 const technologies = [
   { name: "React", icon: <FaReact />, color: "#61DAFB", category: "frontend" },
@@ -28,19 +29,9 @@ export default function TechStackSection() {
   const [hoveredTech, setHoveredTech] = useState<string | null>(null);
 
   return (
-    <section className="w-full py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Background gradient effects */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent to-blue-950/20"></div>
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.1),transparent_60%)]"></div>
-      
-      {/* Animated mesh grid */}
-      <div className="absolute inset-0 z-0 opacity-20">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'linear-gradient(to right, #3b82f610 1px, transparent 1px), linear-gradient(to bottom, #3b82f610 1px, transparent 1px)',
-          backgroundSize: '40px 40px'
-        }}></div>
-      </div>
-      
+    <section className="w-full py-20 lg:py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <GridBackground />
+
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div 
           initial={{ opacity: 0 }}
@@ -94,44 +85,48 @@ export default function TechStackSection() {
               key={tech.name}
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ 
-                type: "spring", 
-                stiffness: 260, 
+              transition={{
+                type: "spring",
+                stiffness: 260,
                 damping: 20,
-                delay: index * 0.04 
+                delay: index * 0.08
               }}
               viewport={{ once: true, margin: "-50px" }}
-              whileHover={{ y: -8, scale: 1.05 }}
+              whileHover={{ y: -12, scale: 1.08 }}
               onMouseEnter={() => setHoveredTech(tech.name)}
               onMouseLeave={() => setHoveredTech(null)}
               className="group relative"
             >
               <div className={cn(
                 "p-5 bg-zinc-900/80 backdrop-blur-sm border border-zinc-800/80 rounded-xl flex flex-col items-center justify-center transition-all duration-500 h-full z-10 relative overflow-hidden",
-                hoveredTech === tech.name ? "border-blue-500/50" : "hover:border-zinc-700"
+                hoveredTech === tech.name ? "border-blue-500/50 shadow-lg shadow-blue-500/20" : "hover:border-zinc-700"
               )}>
                 {/* Animated glow effect */}
-                <div 
-                  className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-20 transition-opacity duration-700" 
-                  style={{ 
-                    background: `radial-gradient(circle at center, ${tech.color}40 0%, transparent 70%)` 
+                <div
+                  className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-30 transition-opacity duration-700"
+                  style={{
+                    background: `radial-gradient(circle at center, ${tech.color}50 0%, transparent 70%)`
                   }}
                 />
-                
-                {/* Animated icon */}
-                <motion.div 
+
+                {/* Animated icon with floating effect */}
+                <motion.div
                   className="text-4xl sm:text-5xl mb-3 relative"
                   style={{ color: tech.color }}
                   animate={
-                    hoveredTech === tech.name 
+                    hoveredTech === tech.name
                       ? { scale: [1, 1.2, 1], rotate: [0, 5, -5, 0] }
-                      : {}
+                      : { y: [0, -5, 0] }
                   }
-                  transition={{ duration: 0.6 }}
+                  transition={
+                    hoveredTech === tech.name
+                      ? { duration: 0.6 }
+                      : { duration: 3, repeat: Infinity, ease: "easeInOut", delay: index * 0.1 }
+                  }
                 >
                   {tech.icon}
-                  <div 
-                    className="absolute inset-0 blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-700" 
+                  <div
+                    className="absolute inset-0 blur-2xl opacity-0 group-hover:opacity-60 transition-opacity duration-700"
                     style={{ background: `radial-gradient(circle at center, ${tech.color} 0%, transparent 70%)` }}
                   />
                 </motion.div>
@@ -150,10 +145,10 @@ export default function TechStackSection() {
               </div>
               
               {/* Shadow effect */}
-              <div 
-                className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-40 blur-xl transition-all duration-700 rounded-xl"
+              <div
+                className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-50 blur-2xl transition-all duration-700 rounded-xl"
                 style={{
-                  background: `radial-gradient(circle at center, ${tech.color}70 0%, transparent 70%)`
+                  background: `radial-gradient(circle at center, ${tech.color}80 0%, transparent 70%)`
                 }}
               />
             </motion.div>

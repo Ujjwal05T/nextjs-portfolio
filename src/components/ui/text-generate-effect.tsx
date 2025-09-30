@@ -22,12 +22,12 @@ export function TypewriterEffect({
       if (index.current < words.length) {
         setText(words.substring(0, index.current + 1));
         index.current += 1;
-        timeoutRef.current = setTimeout(typeText, 30); // Speed of typing
+        timeoutRef.current = setTimeout(typeText, 50); // Speed of typing
       } else {
-        // Animation completed
+        // Animation completed - fade out cursor
         setTimeout(() => {
           setShowCursor(false);
-        }, 1000);
+        }, 800);
       }
     };
 
@@ -47,14 +47,16 @@ export function TypewriterEffect({
       className={`inline-block relative ${className}`}
     >
       {text}
-      {showCursor && (
-        <motion.span
-          initial={{ opacity: 0 }}
-          animate={{ opacity: [0, 1, 0] }}
-          transition={{ repeat: Infinity, duration: 0.8 }}
-          className={`inline-block ml-0.5 w-0.5 h-5 bg-white ${cursorClassName}`}
-        ></motion.span>
-      )}
+      <motion.span
+        initial={{ opacity: 0 }}
+        animate={{ opacity: showCursor ? [0, 1, 0] : 0 }}
+        transition={{
+          repeat: showCursor ? Infinity : 0,
+          duration: 0.8,
+          ...(showCursor ? {} : { duration: 0.5 })
+        }}
+        className={`inline-block ml-0.5 w-0.5 h-5 bg-white ${cursorClassName}`}
+      ></motion.span>
     </motion.div>
   );
 }

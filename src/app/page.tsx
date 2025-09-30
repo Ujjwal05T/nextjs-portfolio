@@ -1,29 +1,34 @@
 "use client";
 
-import { SparklesCore } from "@/components/ui/sparkles";
 import { FloatingSocialBar } from '../components/contact/social-links';
 import HeroSection from "@/components/home/hero-section";
 import TechStackSection from "@/components/home/tech-stack-section";
 import AboutPage from './about/page';
 import ProjectsPage from './projects/page';
 import ContactPage from './contact/page';
+import { useScrollProgress } from "@/hooks/use-scroll-progress";
+import { RadialGradientBg } from "@/components/ui/radial-gradient-bg";
 
 export default function Home() {
+  const scrollProgress = useScrollProgress();
+
   return (
     <>
-      <div className="absolute inset-0 z-0">
-        <SparklesCore
-          id="homesparkles"
-          background="transparent"
-          minSize={0.4}
-          maxSize={1.0}
-          particleDensity={40}
-          className="w-full h-full"
-          particleColor="#FFFFFF"
+      {/* Scroll Progress Bar */}
+      <div className="fixed top-0 left-0 right-0 h-1 bg-zinc-900 z-[60]">
+        <div
+          className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transition-all duration-300"
+          style={{ width: `${scrollProgress}%` }}
         />
       </div>
+
+      {/* Radial Gradient Background */}
+      <RadialGradientBg
+        className="z-10"
+      />
+
       <div className="relative z-10">
-      <FloatingSocialBar />
+        <FloatingSocialBar />
         <HeroSection />
         <TechStackSection />
         <AboutPage />

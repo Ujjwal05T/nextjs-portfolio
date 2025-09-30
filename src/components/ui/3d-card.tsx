@@ -43,11 +43,11 @@ export const CardContainer = ({
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current || isMobile || !isMounted) return;
-    
+
     const { left, top, width, height } =
       containerRef.current.getBoundingClientRect();
-    const x = (e.clientX - left - width / 2) / 25;
-    const y = (e.clientY - top - height / 2) / 25;
+    const x = (e.clientX - left - width / 2) / 45;
+    const y = (e.clientY - top - height / 2) / 45;
     containerRef.current.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
   };
 
@@ -90,7 +90,7 @@ export const CardContainer = ({
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
           className={cn(
-            "flex items-center justify-center relative transition-all duration-200 ease-linear",
+            "flex items-center justify-center relative transition-all duration-500 ease-out",
             className
           )}
           style={{
@@ -179,7 +179,7 @@ export const CardItem = ({
     //here was Tag
     <div
       ref={ref}
-      className={cn("transition duration-200 ease-linear", className)}
+      className={cn("transition duration-500 ease-out", className)}
       {...rest}
     >
       {children}

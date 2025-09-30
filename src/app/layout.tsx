@@ -2,8 +2,12 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/header";
+import SmoothScrollProvider from "@/components/layout/smooth-scroll-provider";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import SplashCursor from '@/components/SplashCursor'
+
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -94,20 +98,46 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white overflow-x-hidden`}
       >
-        <div className="relative min-h-screen">
-          <div className="fixed top-0 left-0 right-0 z-50">
-            <Header />
+        <SplashCursor />
+        <SmoothScrollProvider>
+          <div className="relative min-h-screen">
+            <div className="fixed top-0 left-0 right-0 z-50">
+              <Header />
+            </div>
+
+            <main className="pt-4">{children}</main>
+            <footer className="relative py-8 px-4 text-center text-sm border-t border-cyan-800/30 overflow-hidden">
+              {/* Grid background */}
+              <div className="absolute inset-0 opacity-35">
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    backgroundImage: 'linear-gradient(to right, #06b6d425 1px, transparent 1px), linear-gradient(to bottom, #06b6d425 1px, transparent 1px)',
+                    backgroundSize: '40px 40px'
+                  }}
+                />
+              </div>
+
+              {/* Gradient effects */}
+              <div className="absolute z-40 inset-0 bg-gradient-to-t from-cyan-950/20 to-transparent" />
+              <div className="absolute z-30 inset-0 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.08),transparent_50%)]" />
+
+              {/* Decorative gradient line */}
+              <div className="absolute z-30 top-0 left-1/2 -translate-x-1/2 w-32 h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+
+              {/* Footer content */}
+              <div className="relative z-10 max-w-7xl mx-auto">
+                <p className="text-zinc-400 mb-2">
+                  &copy; 2025 <span className="text-cyan-400 font-medium">Ujjwal Tamrakar</span>. All rights reserved.
+                </p>
+              </div>
+            </footer>
           </div>
-          
-          <main className="pt-4">{children}</main>
-          <footer className="py-6 px-4 text-center text-zinc-500 text-sm">
-            <p>&copy; 2025 Ujjwal Tamrakar. All rights reserved.</p>
-          </footer>
-        </div>
+        </SmoothScrollProvider>
         <Analytics />
         <SpeedInsights />
       </body>
