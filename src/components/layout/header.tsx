@@ -48,7 +48,7 @@ export default function Header() {
     };
 
     // Use Lenis scroll event if available
-    const lenis = (window as any).lenis;
+    const lenis = (window as unknown as { lenis?: { on: (event: string, handler: () => void) => void; off: (event: string, handler: () => void) => void } }).lenis;
     if (lenis) {
       lenis.on('scroll', handleScroll);
     } else {

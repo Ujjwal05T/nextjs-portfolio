@@ -33,7 +33,7 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
     rafIdRef.current = requestAnimationFrame(raf);
 
     // Expose lenis instance globally
-    (window as any).lenis = lenis;
+    (window as unknown as { lenis: Lenis }).lenis = lenis;
 
     // Cleanup
     return () => {
@@ -41,7 +41,7 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
         cancelAnimationFrame(rafIdRef.current);
       }
       lenis.destroy();
-      delete (window as any).lenis;
+      delete (window as unknown as { lenis?: Lenis }).lenis;
     };
   }, []);
 

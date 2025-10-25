@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { FaReact, FaNodeJs, FaGitAlt, FaDocker, FaGithub, FaJava } from "react-icons/fa";
 import { SiNextdotjs, SiExpress, SiSpringboot, SiTailwindcss, SiTypescript, SiJavascript, SiMongodb, SiPostgresql, SiFlutter, SiFastapi, SiDotnet } from "react-icons/si";
 import { cn } from "@/lib/utils";
@@ -24,7 +25,7 @@ const technologies = [
   { name: "Tailwind CSS", icon: <SiTailwindcss />, color: "#38B2AC", category: "frontend" },
   { name: "MongoDB", icon: <SiMongodb />, color: "#47A248", category: "database" },
   { name: "PostgreSQL", icon: <SiPostgresql />, color: "#336791", category: "database" },
-  { name: "Azure", icon: <img src="https://img.icons8.com/fluency/48/azure-1.png" alt="Azure" className="w-11 h-11" />, color: "#0078D4", category: "devops" },
+  { name: "Azure", icon: <Image src="https://img.icons8.com/fluency/48/azure-1.png" alt="Azure" width={44} height={44} />, color: "#0078D4", category: "devops" },
   { name: "Git", icon: <FaGitAlt />, color: "#F05032", category: "devops" },
   { name: "GitHub", icon: <FaGithub />, color: "#FFFFFF", category: "devops" },
   { name: "Docker", icon: <FaDocker />, color: "#2496ED", category: "devops" },

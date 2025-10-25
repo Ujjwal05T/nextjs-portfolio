@@ -2,17 +2,24 @@
 
 import { useEffect, useState, useRef } from 'react';
 
+interface LenisInstance {
+  scroll: number;
+  on: (event: string, handler: () => void) => void;
+  off: (event: string, handler: () => void) => void;
+}
+
 export function useScrollProgress() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const rafIdRef = useRef<number | null>(null);
   const tickingRef = useRef(false);
 
   useEffect(() => {
-    let lenis: any = null;
+    let lenis: LenisInstance | null = null;
 
     // Try to get Lenis instance from window
     if (typeof window !== 'undefined') {
-      lenis = (window as any).lenis;
+      const windowLenis = (window as unknown as { lenis?: LenisInstance }).lenis;
+      lenis = windowLenis || null;
     }
 
     const updateProgress = () => {

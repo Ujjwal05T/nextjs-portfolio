@@ -12,10 +12,13 @@ declare module 'lenis' {
       syncTouch?: boolean;
     });
 
-    on(event: string, callback: Function): void;
-    off(event: string, callback: Function): void;
+    on(event: 'scroll', callback: () => void): void;
+    on(event: string, callback: (data?: unknown) => void): void;
+    off(event: 'scroll', callback: () => void): void;
+    off(event: string, callback: (data?: unknown) => void): void;
     raf(time: number): void;
     scroll: number;
+    scrollTo(value: number, options?: { duration?: number; easing?: (t: number) => number; offset?: number }): void;
     destroy(): void;
   }
 }

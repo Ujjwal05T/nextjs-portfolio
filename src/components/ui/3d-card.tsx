@@ -7,6 +7,7 @@ import React, {
   useContext,
   useRef,
   useEffect,
+  useCallback,
 } from "react";
 
 // Updated context type to be more specific
@@ -160,20 +161,20 @@ export const CardItem = ({
   const [isMouseEntered, , isMobile] = useMouseEnter();
   const [isMounted, setIsMounted] = useState(false);
 
-  useEffect(() => {
-    setIsMounted(true);
-    handleAnimations();
-  }, [isMouseEntered]);
-
-  const handleAnimations = () => {
+  const handleAnimations = useCallback(() => {
     if (!ref.current || !isMounted) return;
-    
+
     if (isMouseEntered && !isMobile) {
       ref.current.style.transform = `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
     } else {
       ref.current.style.transform = `translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`;
     }
-  };
+  }, [isMouseEntered, isMobile, translateX, translateY, translateZ, rotateX, rotateY, rotateZ, isMounted]);
+
+  useEffect(() => {
+    setIsMounted(true);
+    handleAnimations();
+  }, [isMouseEntered, handleAnimations]);
 
   return (
     //here was Tag
