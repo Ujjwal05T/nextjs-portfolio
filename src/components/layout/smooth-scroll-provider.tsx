@@ -5,43 +5,43 @@ import Lenis from 'lenis';
 
 export default function SmoothScrollProvider({ children }: { children: React.ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
+  const rafIdRef = useRef<number | null>(null);
 
   useEffect(() => {
-    // Initialize Lenis with faster, snappier settings
+    // Initialize Lenis with optimized settings for smooth performance
     const lenis = new Lenis({
-      duration: 0.7, // Reduced from 1.0 for faster scrolling (sweet spot between smooth and responsive)
-      easing: (t) => {
-        // Custom easing: quick start with smooth finish
-        // Feels more responsive than easeOutExpo
-        return t < 0.5
-          ? 4 * t * t * t // Ease in cubic for quick acceleration
-          : 1 - Math.pow(-2 * t + 2, 3) / 2; // Ease out cubic for smooth stop
-      },
+      duration: 1.2, // Slightly longer for smoother feel
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Smooth easeOutExpo
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1.8, // Increased from 1 for much more responsive wheel scrolling
-      touchMultiplier: 2, // Keep mobile scrolling responsive
+      wheelMultiplier: 0.8, // Reduced for less aggressive scrolling
+      touchMultiplier: 1.5, // Gentle touch scrolling
       infinite: false,
-      syncTouch: true, // Better sync for touch devices
+      syncTouch: true,
     });
 
     lenisRef.current = lenis;
 
-    // Animation frame loop
-    function raf(time: number) {
+    // Optimized RAF loop with timestamp
+    const raf = (time: number) => {
       lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+      rafIdRef.current = requestAnimationFrame(raf);
+    };
 
-    requestAnimationFrame(raf);
+    // Start RAF loop
+    rafIdRef.current = requestAnimationFrame(raf);
 
-    // Expose lenis instance globally for programmatic scrolling
-    window.lenis = lenis;
+    // Expose lenis instance globally
+    (window as any).lenis = lenis;
 
+    // Cleanup
     return () => {
+      if (rafIdRef.current) {
+        cancelAnimationFrame(rafIdRef.current);
+      }
       lenis.destroy();
-      delete window.lenis;
+      delete (window as any).lenis;
     };
   }, []);
 

@@ -29,19 +29,38 @@ export default function Header() {
     }
   }, [pathname]);
 
-  // Handle scroll effect
+  // Handle scroll effect with throttling
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          if (window.scrollY > 20) {
+            setScrolled(true);
+          } else {
+            setScrolled(false);
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    // Use Lenis scroll event if available
+    const lenis = (window as any).lenis;
+    if (lenis) {
+      lenis.on('scroll', handleScroll);
+    } else {
+      window.addEventListener("scroll", handleScroll, { passive: true });
+    }
+
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      if (lenis) {
+        lenis.off('scroll', handleScroll);
+      } else {
+        window.removeEventListener("scroll", handleScroll);
+      }
     };
   }, []);
 

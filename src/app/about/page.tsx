@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaGraduationCap } from "react-icons/fa";
+import { FaGraduationCap, FaBriefcase } from "react-icons/fa";
 import { GridBackground } from "@/components/ui/grid-background";
 
 export default function AboutPage() {
@@ -9,13 +9,23 @@ export default function AboutPage() {
     {
       degree: "Master of Computer Application",
       institution: "SOC, IPS Academy",
-      year: "2023-Present",
+      year: "2023-2025",
     },
     {
       degree: "Bachelor of Computer Science",
       institution: "RDVV University",
       year: "2020-2023",
     },
+  ];
+
+  const experience = [
+    {
+      title: "Software Engineer",
+      company: "Indas Analytics",
+      location: "Indore",
+      period: "May 2025 - Present",
+      current: true,
+    }
   ];
 
   return (
@@ -132,6 +142,68 @@ export default function AboutPage() {
                           {edu.year}
                         </span>
                       </div>
+                    </motion.div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Experience */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="border border-zinc-800 rounded-lg p-6 bg-zinc-900/30 backdrop-blur-sm hover:border-zinc-700 transition-all duration-500">
+            <div className="flex items-center mb-6">
+              <FaBriefcase className="text-2xl mr-3 text-zinc-400" />
+              <h2 className="text-xl font-bold">Work Experience</h2>
+            </div>
+
+            <div className="relative">
+              {/* Timeline line */}
+              <div className="absolute left-3.5 top-2 bottom-2 w-0.5 bg-gradient-to-b from-zinc-600 via-zinc-700 to-transparent"></div>
+
+              <div className="space-y-8 relative">
+                {experience.map((exp, index) => (
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ delay: index * 0.15, duration: 0.5 }}
+                    key={index}
+                    className="relative pl-12">
+                    {/* Timeline dot */}
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.15 + 0.1, type: "spring", stiffness: 200 }}
+                      className="absolute left-0 top-1.5 w-7 h-7 rounded-full bg-zinc-800 border-2 border-zinc-700 flex items-center justify-center">
+                      <div className="w-2.5 h-2.5 rounded-full bg-cyan-400"></div>
+                    </motion.div>
+
+                    <motion.div
+                      whileHover={{ x: 8, scale: 1.02 }}
+                      className="bg-zinc-800/30 backdrop-blur-sm border border-zinc-700/50 rounded-lg p-4 hover:border-cyan-500/40 hover:shadow-lg hover:shadow-cyan-500/10 transition-all duration-300">
+                      <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
+                        <h3 className="text-lg font-semibold text-white">
+                          {exp.title}
+                        </h3>
+                        {exp.current && (
+                          <span className="px-2 py-1 bg-cyan-500/20 text-cyan-300 text-xs rounded-full border border-cyan-500/30">
+                            Current
+                          </span>
+                        )}
+                      </div>
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm text-zinc-300 mb-2">
+                        <span>{exp.company}</span>
+                        <span className="text-zinc-400 font-mono mt-1 sm:mt-0">
+                          {exp.period}
+                        </span>
+                      </div>
+                      <p className="text-sm text-zinc-400">{exp.location}</p>
                     </motion.div>
                   </motion.div>
                 ))}

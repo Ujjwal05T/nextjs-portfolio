@@ -1,31 +1,57 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 export function useScrollProgress() {
   const [scrollProgress, setScrollProgress] = useState(0);
+  const rafIdRef = useRef<number | null>(null);
+  const tickingRef = useRef(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (window.scrollY / totalHeight) * 100;
-      setScrollProgress(Math.min(progress, 100));
-    };
+    let lenis: any = null;
 
-    // Listen to Lenis scroll events if available
-    const lenis = window.lenis;
-    if (lenis) {
-      lenis.on('scroll', handleScroll);
-    } else {
-      window.addEventListener('scroll', handleScroll);
+    // Try to get Lenis instance from window
+    if (typeof window !== 'undefined') {
+      lenis = (window as any).lenis;
     }
 
-    handleScroll(); // Initial call
+    const updateProgress = () => {
+      if (typeof window !== 'undefined') {
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (totalHeight > 0) {
+          const currentScroll = lenis ? lenis.scroll : window.scrollY;
+          const progress = (currentScroll / totalHeight) * 100;
+          setScrollProgress(Math.min(Math.max(progress, 0), 100));
+        }
+      }
+      tickingRef.current = false;
+    };
+
+    const handleScroll = () => {
+      if (!tickingRef.current) {
+        rafIdRef.current = requestAnimationFrame(updateProgress);
+        tickingRef.current = true;
+      }
+    };
+
+    // Initial update
+    updateProgress();
+
+    // Use Lenis scroll event if available
+    if (lenis) {
+      lenis.on('scroll', handleScroll);
+    } else if (typeof window !== 'undefined') {
+      // Fallback to native scroll
+      window.addEventListener('scroll', handleScroll, { passive: true });
+    }
 
     return () => {
+      if (rafIdRef.current) {
+        cancelAnimationFrame(rafIdRef.current);
+      }
       if (lenis) {
         lenis.off('scroll', handleScroll);
-      } else {
+      } else if (typeof window !== 'undefined') {
         window.removeEventListener('scroll', handleScroll);
       }
     };

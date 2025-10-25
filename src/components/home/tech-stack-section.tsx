@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaReact, FaNodeJs, FaGitAlt, FaDocker, FaGithub, FaJava } from "react-icons/fa";
-import { SiNextdotjs, SiExpress, SiSpringboot, SiTailwindcss, SiTypescript, SiJavascript, SiMongodb, SiPostgresql } from "react-icons/si";
+import { SiNextdotjs, SiExpress, SiSpringboot, SiTailwindcss, SiTypescript, SiJavascript, SiMongodb, SiPostgresql, SiFlutter, SiFastapi, SiDotnet } from "react-icons/si";
 import { cn } from "@/lib/utils";
 import { GridBackground } from "@/components/ui/grid-background";
 
@@ -11,15 +11,20 @@ const technologies = [
   { name: "React", icon: <FaReact />, color: "#61DAFB", category: "frontend" },
   { name: "Next.js", icon: <SiNextdotjs />, color: "#FFFFFF", category: "frontend" },
   { name: "React Native", icon: <FaReact />, color: "#61DAFB", category: "mobile" }, // Using FaReact icon as it's the official logo
+  { name: "Flutter", icon: <SiFlutter />, color: "#02569B", category: "mobile" },
   { name: "Node.js", icon: <FaNodeJs />, color: "#539E43", category: "backend" },
   { name: "Java", icon: <FaJava />, color: "#ED8B00", category: "backend" }, // Added Java
   { name: "Express", icon: <SiExpress />, color: "#FFFFFF", category: "backend" },
   { name: "Spring Boot", icon: <SiSpringboot />, color: "#6DB33F", category: "backend" },
+  { name: "FastAPI", icon: <SiFastapi />, color: "#009688", category: "backend" },
+  { name: ".NET", icon: <SiDotnet />, color: "#512BD4", category: "backend" },
+  { name: "C#", icon: <SiDotnet />, color: "#239120", category: "backend" }, // Using SiDotnet as C# icon
   { name: "TypeScript", icon: <SiTypescript />, color: "#3178C6", category: "frontend" },
   { name: "JavaScript", icon: <SiJavascript />, color: "#F7DF1E", category: "frontend" },
   { name: "Tailwind CSS", icon: <SiTailwindcss />, color: "#38B2AC", category: "frontend" },
   { name: "MongoDB", icon: <SiMongodb />, color: "#47A248", category: "database" },
   { name: "PostgreSQL", icon: <SiPostgresql />, color: "#336791", category: "database" },
+  { name: "Azure", icon: <img src="https://img.icons8.com/fluency/48/azure-1.png" alt="Azure" className="w-11 h-11" />, color: "#0078D4", category: "devops" },
   { name: "Git", icon: <FaGitAlt />, color: "#F05032", category: "devops" },
   { name: "GitHub", icon: <FaGithub />, color: "#FFFFFF", category: "devops" },
   { name: "Docker", icon: <FaDocker />, color: "#2496ED", category: "devops" },
