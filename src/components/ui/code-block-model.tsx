@@ -6,14 +6,14 @@ import { Text, MeshTransmissionMaterial } from "@react-three/drei";
 import * as THREE from "three";
 
 export function GalaxyModel() {
-  const cubeRef = useRef<THREE.Group>(null);
+  const sphereRef = useRef<THREE.Group>(null);
   const circuitLinesRef = useRef<THREE.Group>(null);
   const dataParticlesRef = useRef<THREE.Points>(null);
   const codeSymbolsRef = useRef<THREE.Group>(null);
   const hologramRef = useRef<THREE.Mesh>(null);
 
-  // Code brackets for the cube faces
-  const codeBrackets = ["{", "}", "<", "/>", "[ ]", "( )"];
+  // Code brackets and symbols for the sphere
+  const codeBrackets = ["{", "}", "<", "/>", "[ ]", "( )", "=>", "{ }", "< />"];
 
   // Create circuit lines
   const circuitLineObjects = useMemo(() => {
@@ -101,15 +101,15 @@ export function GalaxyModel() {
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime();
 
-    // Main cube rotation
-    if (cubeRef.current) {
-      cubeRef.current.rotation.y = t * 0.3;
-      cubeRef.current.rotation.x = Math.sin(t * 0.2) * 0.15;
+    // Main sphere rotation
+    if (sphereRef.current) {
+      sphereRef.current.rotation.y = t * 0.2;
+      sphereRef.current.rotation.x = Math.sin(t * 0.15) * 0.1;
     }
 
     // Circuit lines rotation
     if (circuitLinesRef.current) {
-      circuitLinesRef.current.rotation.y = -t * 0.15;
+      circuitLinesRef.current.rotation.y = -t * 0.12;
     }
 
     // Data particles slow drift
@@ -120,7 +120,7 @@ export function GalaxyModel() {
 
     // Code symbols rotation
     if (codeSymbolsRef.current) {
-      codeSymbolsRef.current.rotation.y = t * 0.2;
+      codeSymbolsRef.current.rotation.y = t * 0.15;
     }
 
     // Hologram pulse
@@ -132,59 +132,70 @@ export function GalaxyModel() {
 
   return (
     <group>
-      {/* Central holographic code cube */}
-      <group ref={cubeRef}>
-        {/* Glass cube with code aesthetic */}
+      {/* Central holographic code sphere */}
+      <group ref={sphereRef}>
+        {/* Glass sphere with code aesthetic */}
         <mesh>
-          <boxGeometry args={[1.8, 1.8, 1.8]} />
+          <icosahedronGeometry args={[1.6, 32]} />
           <MeshTransmissionMaterial
             color="#a855f7"
-            transmission={0.9}
-            roughness={0.1}
-            thickness={0.5}
+            transmission={0.95}
+            roughness={0.05}
+            thickness={0.8}
             ior={1.5}
-            chromaticAberration={0.15}
+            chromaticAberration={0.12}
             backside={true}
             transparent
           />
         </mesh>
 
-        {/* Wireframe cube edges - cyan glow */}
+        {/* Wireframe sphere overlay - cyan glow */}
         <lineSegments>
-          <edgesGeometry args={[new THREE.BoxGeometry(1.8, 1.8, 1.8)]} />
-          <lineBasicMaterial color="#06b6d4" linewidth={2} />
+          <edgesGeometry args={[new THREE.IcosahedronGeometry(1.6, 8)]} />
+          <lineBasicMaterial color="#06b6d4" opacity={0.3} transparent />
         </lineSegments>
 
-        {/* Inner glowing core */}
+        {/* Inner glowing core sphere */}
         <mesh>
-          <boxGeometry args={[1.2, 1.2, 1.2]} />
+          <sphereGeometry args={[0.9, 32, 32]} />
           <meshStandardMaterial
             color="#7c3aed"
-            metalness={0.9}
-            roughness={0.2}
+            metalness={0.95}
+            roughness={0.1}
             emissive="#a855f7"
-            emissiveIntensity={1.0}
+            emissiveIntensity={1.2}
           />
         </mesh>
 
-        {/* Code bracket symbols on cube corners */}
+        {/* Energy core glow - amber accent */}
+        <mesh>
+          <sphereGeometry args={[0.95, 32, 32]} />
+          <meshBasicMaterial
+            color="#f59e0b"
+            opacity={0.25}
+            transparent
+          />
+        </mesh>
+
+        {/* Code bracket symbols orbiting sphere */}
         <group ref={codeSymbolsRef}>
           {codeBrackets.map((bracket, i) => {
-            const angle = (i / 6) * Math.PI * 2;
-            const radius = 1.3;
+            const angle = (i / codeBrackets.length) * Math.PI * 2;
+            const phi = Math.acos(2 * (i / codeBrackets.length) - 1);
+            const radius = 1.4;
             return (
               <Text
                 key={i}
                 position={[
-                  Math.cos(angle) * radius,
-                  Math.sin(angle * 0.5) * radius,
-                  Math.sin(angle) * radius,
+                  Math.cos(angle) * Math.sin(phi) * radius,
+                  Math.cos(phi) * radius * 0.8,
+                  Math.sin(angle) * Math.sin(phi) * radius,
                 ]}
-                fontSize={0.3}
+                fontSize={0.25}
                 color="#06b6d4"
                 anchorX="center"
                 anchorY="middle"
-                outlineWidth={0.02}
+                outlineWidth={0.015}
                 outlineColor="#a855f7"
               >
                 {bracket}
