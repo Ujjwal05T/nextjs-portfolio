@@ -1,10 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import { GridBackground } from "@/components/ui/grid-background";
@@ -26,8 +24,6 @@ type Project = {
 };
 
 export default function ProjectsPage() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
   // Sample project data - replace with your actual projects
   const projects: Project[] = [
     {
@@ -86,7 +82,7 @@ export default function ProjectsPage() {
   ];
 
   return (
-    <section id="projects" className="min-h-screen w-full relative overflow-hidden py-20 lg:py-32 px-4 sm:px-6 lg:px-8">
+    <div id="projects" className="min-h-screen w-full relative overflow-hidden py-20 lg:py-32 px-4 sm:px-6 lg:px-8">
       <GridBackground />
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
@@ -114,8 +110,6 @@ export default function ProjectsPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.12 * (index % 3) }}
               className="h-full"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
               whileHover={{ y: -8 }}
             >
               {/* Small screens: simplified card without 3D effect */}

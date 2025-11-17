@@ -41,7 +41,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <section id="about" className="min-h-screen w-full relative overflow-hidden py-20 lg:py-32 px-4 sm:px-6 lg:px-8">
+    <div id="about" className="min-h-screen w-full relative overflow-hidden py-20 lg:py-32 px-4 sm:px-6 lg:px-8">
       <GridBackground />
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
@@ -178,6 +178,6 @@ export default function AboutPage() {
           </motion.div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
