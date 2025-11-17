@@ -59,13 +59,13 @@ export default function ContactPage() {
       name: "Email",
       icon: <FaEnvelope size={20} />,
       href: "mailto:utamrakar3@gmail.com",
-      color: "from-yellow-500 to-red-500",
+      color: "from-amber-500 to-orange-500",
     },
     {
       name: "LinkedIn",
       icon: <FaLinkedin size={20} />,
       href: "http://www.linkedin.com/in/ujjwal-tamrakar",
-      color: "from-blue-500 to-blue-700",
+      color: "from-cyan-500 to-cyan-700",
     },
     {
       name: "GitHub",
@@ -77,7 +77,7 @@ export default function ContactPage() {
       name: "Twitter",
       icon: <FaTwitter size={20} />,
       href: "https://twitter.com/TamrkarUjjwal",
-      color: "from-sky-400 to-blue-600",
+      color: "from-purple-500 to-purple-700",
     },
   ];
 
@@ -92,13 +92,13 @@ export default function ContactPage() {
           transition={{ duration: 0.5 }}
           className="text-center mb-10 sm:mb-16"
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
+          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-2">
             Get In Touch
-          </h1>
-          <p className="mt-3 sm:mt-4 text-sm sm:text-base text-zinc-400 max-w-xl mx-auto">
+          </h2>
+          <p className="mt-3 sm:mt-4 text-base sm:text-lg text-muted-foreground max-w-xl mx-auto">
             Have a question or want to work together? Feel free to reach out.
           </p>
-          <div className="h-1 w-16 sm:w-20 bg-zinc-700 mx-auto mt-3 sm:mt-4" />
+          <div className="h-1 w-20 bg-primary mx-auto mt-4" />
         </motion.div>
         
         {/* Social Links Badges */}
@@ -126,12 +126,12 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="relative bg-zinc-900/40 backdrop-blur-xl border border-zinc-700/50 rounded-xl p-5 sm:p-6 lg:w-2/3 hover:border-zinc-600/80 transition-all duration-500 shadow-xl shadow-zinc-900/50 hover:shadow-2xl hover:shadow-blue-500/10"
+            className="relative bg-zinc-900/40 backdrop-blur-xl border border-white/5 rounded-xl p-5 sm:p-6 lg:w-2/3 hover:border-primary/30 transition-all duration-500 shadow-xl shadow-zinc-900/50 hover:shadow-2xl hover:shadow-primary/10"
           >
             {/* Glassmorphism gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/20 via-transparent to-blue-900/10 rounded-xl pointer-events-none"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 rounded-xl pointer-events-none"></div>
             <div className="relative z-10">
-            <h2 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">Send Me a Message</h2>
+            <h2 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-gradient">Send Me a Message</h2>
             
             <form onSubmit={handleSubmit} 
             action="https://formspree.io/f/xdkeaawn" 
@@ -149,7 +149,7 @@ export default function ContactPage() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-zinc-800/50 backdrop-blur-sm border border-zinc-700/70 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 text-zinc-200 hover:border-zinc-600 transition-all duration-300 focus:bg-zinc-800/70 focus:scale-[1.01]"
+                    className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-zinc-800/50 backdrop-blur-sm border border-zinc-700/70 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 text-zinc-200 hover:border-zinc-600 transition-all duration-300 focus:bg-zinc-800/70 focus:scale-[1.01]"
                     placeholder="Your name"
                   />
                 </div>
@@ -165,7 +165,7 @@ export default function ContactPage() {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-zinc-800/50 backdrop-blur-sm border border-zinc-700/70 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 text-zinc-200 hover:border-zinc-600 transition-all duration-300 focus:bg-zinc-800/70 focus:scale-[1.01]"
+                    className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-zinc-800/50 backdrop-blur-sm border border-zinc-700/70 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 text-zinc-200 hover:border-zinc-600 transition-all duration-300 focus:bg-zinc-800/70 focus:scale-[1.01]"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -182,7 +182,7 @@ export default function ContactPage() {
                   required
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-zinc-800/50 backdrop-blur-sm border border-zinc-700/70 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 text-zinc-200 resize-none hover:border-zinc-600 transition-all duration-300 focus:bg-zinc-800/70 focus:scale-[1.01]"
+                  className="w-full px-3 py-2 sm:px-4 sm:py-3 bg-zinc-800/50 backdrop-blur-sm border border-zinc-700/70 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 text-zinc-200 resize-none hover:border-zinc-600 transition-all duration-300 focus:bg-zinc-800/70 focus:scale-[1.01]"
                   placeholder="Your message..."
                 />
               </div>
@@ -195,7 +195,7 @@ export default function ContactPage() {
                 className={`w-full flex items-center justify-center px-5 py-3 sm:py-4 rounded-lg text-white transition-all duration-300 ${
                   isSubmitting
                     ? "bg-zinc-700 cursor-not-allowed"
-                    : "bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 shadow-lg shadow-blue-900/30 hover:shadow-xl hover:shadow-blue-500/30"
+                    : "btn-primary"
                 }`}
               >
                 <FaPaperPlane className={`mr-2 ${isSubmitting ? 'animate-pulse' : ''}`} />
@@ -241,10 +241,10 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative bg-zinc-900/40 backdrop-blur-xl border border-zinc-700/50 rounded-xl p-5 sm:p-6 lg:w-1/3 hover:border-zinc-600/80 transition-all duration-500 shadow-xl shadow-zinc-900/50"
+            className="relative bg-zinc-900/40 backdrop-blur-xl border border-white/5 rounded-xl p-5 sm:p-6 lg:w-1/3 hover:border-primary/30 transition-all duration-500 shadow-xl shadow-zinc-900/50"
           >
             {/* Glassmorphism gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/20 via-transparent to-purple-900/10 rounded-xl pointer-events-none"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 via-transparent to-primary/10 rounded-xl pointer-events-none"></div>
             <div className="relative z-10">
             <div className="flex flex-col h-full justify-center">
               <div className="mb-6 flex items-center">

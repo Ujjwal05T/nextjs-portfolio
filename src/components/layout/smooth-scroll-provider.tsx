@@ -16,9 +16,9 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
       gestureOrientation: 'vertical',
       smoothWheel: true,
       wheelMultiplier: 0.8, // Reduced for less aggressive scrolling
-      touchMultiplier: 1.5, // Gentle touch scrolling
+      touchMultiplier: 2, // Enhanced touch scrolling for mobile
       infinite: false,
-      syncTouch: true,
+      syncTouch: true, // Enable smooth scroll on touch devices for natural mobile scrolling
     });
 
     lenisRef.current = lenis;

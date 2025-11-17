@@ -1,23 +1,25 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+// Temporarily disabled Google Fonts due to network restrictions
+// import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/header";
 import SmoothScrollProvider from "@/components/layout/smooth-scroll-provider";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import SplashCursor from '@/components/SplashCursor'
+import { FloatingCode } from '@/components/ui/floating-code'
+import { LightAura } from '@/components/ui/light-aura'
 
+// Using system fonts as fallback
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 
 export const metadata: Metadata = {
   title: {
@@ -100,9 +102,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white overflow-x-hidden`}
+        className="antialiased bg-black text-white overflow-x-hidden"
+        style={{ fontFamily: 'Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif' }}
       >
         <SplashCursor />
+        <LightAura />
+        <FloatingCode />
         <SmoothScrollProvider>
           <div className="relative min-h-screen">
             <div className="fixed top-0 left-0 right-0 z-50">
