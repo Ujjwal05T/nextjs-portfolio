@@ -28,190 +28,156 @@ export default function AboutPage() {
     }
   ];
 
+  const skills = [
+    { name: "React", level: "Advanced", years: 2 },
+    { name: "Next.js", level: "Advanced", years: 2 },
+    { name: "TypeScript", level: "Intermediate", years: 1.5 },
+    { name: "Node.js", level: "Intermediate", years: 2 },
+    { name: "Three.js", level: "Intermediate", years: 1 },
+    { name: "Tailwind CSS", level: "Advanced", years: 2 },
+    { name: "MongoDB", level: "Intermediate", years: 1.5 },
+    { name: "PostgreSQL", level: "Intermediate", years: 1 },
+    { name: "Git", level: "Advanced", years: 2 },
+  ];
+
   return (
-    <div className="min-h-screen w-full relative overflow-hidden py-20 lg:py-32 px-4 sm:px-6 lg:px-8">
+    <section id="about" className="min-h-screen w-full relative overflow-hidden py-20 lg:py-32 px-4 sm:px-6 lg:px-8">
       <GridBackground />
-      <div className="relative z-10 max-w-4xl mx-auto">
+      <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12">
-          <h1 className="text-4xl sm:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-200 to-neutral-500">
-            About Me
-          </h1>
-          <div className="h-1 w-20 bg-zinc-700 mx-auto mt-4" />
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-2">About Me</h2>
+          <div className="h-1 w-20 bg-primary mx-auto mt-4" />
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="space-y-8">
-          {/* Brief Bio */}
-          <div className="text-zinc-300 border border-zinc-800 space-y-4 p-6 rounded-lg bg-zinc-900/30 backdrop-blur-sm hover:border-zinc-700 transition-all duration-500">
-            <motion.p
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.8 }}
-              transition={{ delay: 0.1, duration: 0.5 }}>
-              Hey there! I&apos;m Ujjwal Tamrakar, a passionate Full Stack Developer
-              who loves creating digital experiences that are both functional
-              and beautifully designed.
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.8 }}
-              transition={{ delay: 0.2, duration: 0.5 }}>
-              I specialize in modern web technologies like React, Next.js, and
-              various backend frameworks. What drives me is the perfect balance
-              between clean code and exceptional user experience - I believe
-              great software should work flawlessly while looking amazing.
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.8 }}
-              transition={{ delay: 0.3, duration: 0.5 }}>
-              Throughout my journey, I&apos;ve focused on building solutions that
-              solve real problems while paying attention to the details that
-              make applications stand out. I&apos;m constantly learning and exploring
-              new technologies to expand what I can create.
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.8 }}
-              transition={{ delay: 0.4, duration: 0.5 }}>
-              When I&apos;m not coding, you&apos;ll find me exploring design trends,
-              contributing to open-source projects, and looking for ways to make
-              technology more accessible and enjoyable for everyone.
-            </motion.p>
-          </div>
-
-          {/* Education */}
+        {/* Two-column layout */}
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Left column - Bio and Timeline */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="border border-zinc-800 rounded-lg p-6 bg-zinc-900/30 backdrop-blur-sm hover:border-zinc-700 transition-all duration-500">
-            <div className="flex items-center mb-6">
-              <FaGraduationCap className="text-2xl mr-3 text-zinc-400" />
-              <h2 className="text-xl font-bold">Education</h2>
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6 }}
+            className="space-y-8"
+          >
+            {/* Brief Bio */}
+            <div className="space-y-4">
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                I&apos;m a <span className="text-primary font-semibold">Full-Stack Developer</span> specializing
+                in building modern web applications with React, Next.js, and cloud technologies.
+                I focus on creating impactful digital experiences in edtech and dashboard applications.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Currently working as a Software Engineer at Indas Analytics, where I develop
+                data-driven applications and contribute to scalable cloud-based solutions.
+              </p>
             </div>
 
-            <div className="relative">
-              {/* Timeline line */}
-              <div className="absolute left-3.5 top-2 bottom-2 w-0.5 bg-gradient-to-b from-zinc-600 via-zinc-700 to-transparent"></div>
-
-              <div className="space-y-8 relative">
-                {education.map((edu, index) => (
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ delay: index * 0.15, duration: 0.5 }}
-                    key={index}
-                    className="relative pl-12">
-                    {/* Timeline dot */}
+            {/* Timeline - Education & Experience */}
+            <div className="space-y-6">
+              {/* Education Section */}
+              <div>
+                <div className="flex items-center mb-4">
+                  <FaGraduationCap className="text-xl mr-2 text-primary" />
+                  <h3 className="text-xl font-semibold text-white">Education</h3>
+                </div>
+                <div className="space-y-3">
+                  {education.map((edu, index) => (
                     <motion.div
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
+                      key={index}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
-                      transition={{ delay: index * 0.15 + 0.1, type: "spring", stiffness: 200 }}
-                      className="absolute left-0 top-1.5 w-7 h-7 rounded-full bg-zinc-800 border-2 border-zinc-700 flex items-center justify-center">
-                      <div className="w-2.5 h-2.5 rounded-full bg-blue-400"></div>
+                      transition={{ delay: index * 0.1 }}
+                      className="border-l-2 border-primary/30 pl-4 py-2"
+                    >
+                      <div className="text-sm text-primary font-mono mb-1">{edu.year}</div>
+                      <h4 className="text-white font-semibold">{edu.degree}</h4>
+                      <p className="text-muted-foreground text-sm">{edu.institution}</p>
                     </motion.div>
-
-                    <motion.div
-                      whileHover={{ x: 8, scale: 1.02 }}
-                      className="bg-zinc-800/30 backdrop-blur-sm border border-zinc-700/50 rounded-lg p-4 hover:border-blue-500/40 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300">
-                      <h3 className="text-lg font-semibold text-white">
-                        {edu.degree}
-                      </h3>
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm mt-1">
-                        <span className="text-zinc-300">{edu.institution}</span>
-                        <span className="text-zinc-400 font-mono mt-1 sm:mt-0">
-                          {edu.year}
-                        </span>
-                      </div>
-                    </motion.div>
-                  </motion.div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-          </motion.div>
 
-          {/* Experience */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="border border-zinc-800 rounded-lg p-6 bg-zinc-900/30 backdrop-blur-sm hover:border-zinc-700 transition-all duration-500">
-            <div className="flex items-center mb-6">
-              <FaBriefcase className="text-2xl mr-3 text-zinc-400" />
-              <h2 className="text-xl font-bold">Work Experience</h2>
-            </div>
-
-            <div className="relative">
-              {/* Timeline line */}
-              <div className="absolute left-3.5 top-2 bottom-2 w-0.5 bg-gradient-to-b from-zinc-600 via-zinc-700 to-transparent"></div>
-
-              <div className="space-y-8 relative">
-                {experience.map((exp, index) => (
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ delay: index * 0.15, duration: 0.5 }}
-                    key={index}
-                    className="relative pl-12">
-                    {/* Timeline dot */}
+              {/* Experience Section */}
+              <div>
+                <div className="flex items-center mb-4">
+                  <FaBriefcase className="text-xl mr-2 text-primary" />
+                  <h3 className="text-xl font-semibold text-white">Experience</h3>
+                </div>
+                <div className="space-y-3">
+                  {experience.map((exp, index) => (
                     <motion.div
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
+                      key={index}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
-                      transition={{ delay: index * 0.15 + 0.1, type: "spring", stiffness: 200 }}
-                      className="absolute left-0 top-1.5 w-7 h-7 rounded-full bg-zinc-800 border-2 border-zinc-700 flex items-center justify-center">
-                      <div className="w-2.5 h-2.5 rounded-full bg-cyan-400"></div>
-                    </motion.div>
-
-                    <motion.div
-                      whileHover={{ x: 8, scale: 1.02 }}
-                      className="bg-zinc-800/30 backdrop-blur-sm border border-zinc-700/50 rounded-lg p-4 hover:border-cyan-500/40 hover:shadow-lg hover:shadow-cyan-500/10 transition-all duration-300">
-                      <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
-                        <h3 className="text-lg font-semibold text-white">
-                          {exp.title}
-                        </h3>
+                      transition={{ delay: index * 0.1 }}
+                      className="border-l-2 border-secondary/30 pl-4 py-2"
+                    >
+                      <div className="flex items-center gap-2 mb-1">
+                        <div className="text-sm text-secondary font-mono">{exp.period}</div>
                         {exp.current && (
-                          <span className="px-2 py-1 bg-cyan-500/20 text-cyan-300 text-xs rounded-full border border-cyan-500/30">
+                          <span className="px-2 py-0.5 bg-primary/20 text-primary text-xs rounded-full border border-primary/30">
                             Current
                           </span>
                         )}
                       </div>
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm text-zinc-300 mb-2">
-                        <span>{exp.company}</span>
-                        <span className="text-zinc-400 font-mono mt-1 sm:mt-0">
-                          {exp.period}
-                        </span>
-                      </div>
-                      <p className="text-sm text-zinc-400">{exp.location}</p>
+                      <h4 className="text-white font-semibold">{exp.title}</h4>
+                      <p className="text-muted-foreground text-sm">{exp.company} • {exp.location}</p>
                     </motion.div>
-                  </motion.div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
-        </motion.div>
+
+          {/* Right column - Skills Grid */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <h3 className="text-2xl font-semibold text-white mb-6">Tech Stack</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              {skills.map((skill, index) => (
+                <motion.div
+                  key={skill.name}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                  whileHover={{ scale: 1.05, y: -4 }}
+                  className="card-professional p-4 text-center"
+                >
+                  <div className="text-lg font-semibold text-white mb-1">{skill.name}</div>
+                  <div className="text-xs text-primary font-medium mb-2">{skill.level}</div>
+                  <div className="text-xs text-muted-foreground">{skill.years} year{skill.years > 1 ? 's' : ''}</div>
+
+                  {/* Progress bar */}
+                  <div className="mt-3 w-full bg-muted/20 rounded-full h-1.5 overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{
+                        width: skill.level === "Advanced" ? "90%" : skill.level === "Intermediate" ? "70%" : "50%"
+                      }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: index * 0.05 }}
+                      className="h-full bg-gradient-to-r from-primary to-secondary rounded-full"
+                    />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

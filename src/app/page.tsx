@@ -15,9 +15,9 @@ export default function Home() {
   return (
     <>
       {/* Scroll Progress Bar */}
-      <div className="fixed top-0 left-0 right-0 h-1 bg-zinc-900 z-[60]">
+      <div className="fixed top-0 left-0 right-0 h-1 bg-background z-[60]">
         <div
-          className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transition-all duration-300"
+          className="h-full bg-gradient-to-r from-primary to-secondary transition-all duration-300"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>

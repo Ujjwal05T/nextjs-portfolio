@@ -9,8 +9,8 @@ import { FiMenu, FiX } from "react-icons/fi";
 
 const NavItems = [
   { name: "Home", link: "/" },
-  { name: "About", link: "/about" },
-  { name: "Projects", link: "/projects" },
+  { name: "About", link: "/#about" },
+  { name: "Projects", link: "/#projects" },
   { name: "Contact", link: "/contact" },
 ];
 
@@ -72,8 +72,8 @@ export default function Header() {
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           className={cn(
-            "hidden sm:block fixed top-4 inset-x-0 max-w-fit mx-auto border border-cyan-800/50 rounded-full bg-black/80 backdrop-blur-xl z-[100] px-3 py-2 shadow-lg shadow-cyan-900/20",
-            scrolled ? "border-cyan-700/60 shadow-xl shadow-cyan-900/30" : ""
+            "hidden md:flex fixed top-4 inset-x-0 max-w-fit mx-auto border border-primary/30 rounded-full bg-background/80 backdrop-blur-xl z-[100] px-3 py-2 shadow-lg items-center gap-4",
+            scrolled ? "border-primary/50 shadow-xl" : ""
           )}
         >
           <nav className="flex justify-center space-x-1 sm:space-x-2 md:space-x-4">
@@ -86,7 +86,7 @@ export default function Header() {
                   "relative px-4 sm:px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300",
                   activeItem === item.link
                     ? "text-white"
-                    : "text-zinc-400 hover:text-cyan-300"
+                    : "text-muted-foreground hover:text-primary"
                 )}
               >
                 {activeItem === item.link && (
@@ -97,7 +97,7 @@ export default function Header() {
                       bounce: 0.25,
                       duration: 0.5,
                     }}
-                    className="absolute inset-0 bg-gradient-to-r from-cyan-600/20 to-cyan-500/20 rounded-full border border-cyan-500/30"
+                    className="absolute inset-0 bg-primary/10 rounded-full border border-primary/30"
                     style={{ zIndex: -1 }}
                   />
                 )}
@@ -107,7 +107,7 @@ export default function Header() {
                 {activeItem === item.link && (
                   <motion.div
                     layoutId="active-dot"
-                    className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-cyan-400 rounded-full"
+                    className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary rounded-full"
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3 }}
@@ -116,6 +116,15 @@ export default function Header() {
               </Link>
             ))}
           </nav>
+
+          {/* Download Resume CTA */}
+          <a
+            href="/Resume.pdf"
+            download="Ujjwal_Tamrakar_Resume.pdf"
+            className="btn-outline-pill whitespace-nowrap"
+          >
+            Download Resume
+          </a>
         </motion.div>
 
         {/* Mobile Menu Button */}
@@ -123,16 +132,16 @@ export default function Header() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className={cn(
-            "sm:hidden fixed top-4 right-4 z-[100]",
-            "h-11 w-11 rounded-full bg-black/90 border border-cyan-800/50 backdrop-blur-xl flex items-center justify-center shadow-lg shadow-cyan-900/20",
-            scrolled ? "border-cyan-700/60 shadow-xl shadow-cyan-900/30" : "",
-            isMobileMenuOpen ? "border-cyan-500/60" : ""
+            "md:hidden fixed top-4 right-4 z-[100]",
+            "h-11 w-11 rounded-full bg-background/90 border border-primary/30 backdrop-blur-xl flex items-center justify-center shadow-lg",
+            scrolled ? "border-primary/50 shadow-xl" : "",
+            isMobileMenuOpen ? "border-primary/60" : ""
           )}
         >
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
-            className="text-cyan-300 hover:text-cyan-200 focus:outline-none w-full h-full flex items-center justify-center transition-colors"
+            className="text-primary hover:text-secondary focus:outline-none w-full h-full flex items-center justify-center transition-colors"
           >
             {isMobileMenuOpen ? <FiX size={22} /> : <FiMenu size={22} />}
           </button>
@@ -146,10 +155,10 @@ export default function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/95 backdrop-blur-xl z-40 sm:hidden flex flex-col items-center justify-center"
+            className="fixed inset-0 bg-background/95 backdrop-blur-xl z-40 md:hidden flex flex-col items-center justify-center"
           >
             {/* Decorative glow effect */}
-            <div className="absolute inset-0 bg-gradient-to-b from-cyan-950/20 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent" />
 
             <motion.nav
               initial={{ opacity: 0, y: 20 }}
@@ -173,8 +182,8 @@ export default function Header() {
                     className={cn(
                       "relative px-10 py-3.5 rounded-full text-lg font-medium transition-all duration-300",
                       activeItem === item.link
-                        ? "text-white bg-gradient-to-r from-cyan-600/20 to-cyan-500/20 border border-cyan-500/40 shadow-lg shadow-cyan-500/20"
-                        : "text-zinc-400 hover:text-cyan-300 border border-transparent hover:border-cyan-800/50"
+                        ? "text-white bg-primary/10 border border-primary/40 shadow-lg"
+                        : "text-muted-foreground hover:text-primary border border-transparent hover:border-primary/30"
                     )}
                   >
                     {item.name}
@@ -194,7 +203,7 @@ export default function Header() {
                 href="https://github.com/Ujjwal05T"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-400 hover:text-cyan-400 transition-all duration-300 hover:scale-110"
+                className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110"
                 aria-label="GitHub"
               >
                 <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
@@ -205,7 +214,7 @@ export default function Header() {
                 href="https://linkedin.com/in/ujjwal-tamrakar"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-400 hover:text-cyan-400 transition-all duration-300 hover:scale-110"
+                className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110"
                 aria-label="LinkedIn"
               >
                 <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
