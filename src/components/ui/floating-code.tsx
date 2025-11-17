@@ -95,7 +95,7 @@ export function FloatingCode() {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden z-[5]">
+    <div className="fixed inset-0 pointer-events-none overflow-hidden z-[6]">
       <AnimatePresence>
         {snippets.map((snippet) => (
           <motion.div
@@ -118,12 +118,13 @@ export function FloatingCode() {
               left: `${snippet.x}%`,
               top: `${snippet.y}%`,
             }}
-            className="font-mono text-base sm:text-lg font-bold select-none"
+            className="font-mono text-lg sm:text-xl font-bold select-none drop-shadow-lg"
           >
             <span
               style={{
                 color: snippet.color,
-                textShadow: `0 0 8px ${snippet.color}40`,
+                textShadow: `0 0 10px ${snippet.color}, 0 0 20px ${snippet.color}80, 0 2px 4px rgba(0,0,0,0.8)`,
+                filter: "drop-shadow(0 0 2px rgba(0,0,0,0.9))",
               }}
             >
               {snippet.code}

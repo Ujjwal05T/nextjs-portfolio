@@ -8,6 +8,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import SplashCursor from '@/components/SplashCursor'
 import { FloatingCode } from '@/components/ui/floating-code'
+import { LightAura } from '@/components/ui/light-aura'
 
 // Using system fonts as fallback
 // const geistSans = Geist({
@@ -105,6 +106,7 @@ export default function RootLayout({
         style={{ fontFamily: 'Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif' }}
       >
         <SplashCursor />
+        <LightAura />
         <FloatingCode />
         <SmoothScrollProvider>
           <div className="relative min-h-screen">

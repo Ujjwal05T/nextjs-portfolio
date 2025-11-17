@@ -8,12 +8,19 @@ import * as THREE from "three";
 export function GalaxyModel() {
   const sphereRef = useRef<THREE.Group>(null);
   const circuitLinesRef = useRef<THREE.Group>(null);
-  const dataParticlesRef = useRef<THREE.Points>(null);
+  const dataParticlesRef = useRef<THREE.Group>(null);
   const codeSymbolsRef = useRef<THREE.Group>(null);
   const hologramRef = useRef<THREE.Mesh>(null);
 
   // Code brackets and symbols for the sphere
   const codeBrackets = ["{", "}", "<", "/>", "[ ]", "( )", "=>", "{ }", "< />"];
+
+  // Floating code snippets to replace particles
+  const floatingCodeSnippets = [
+    "</>", "js", "tsx", "main()", "const", "let", "=>", "async", "await",
+    "return", "import", "export", "class", "void", "public", "static",
+    "{}", "[]", "()", "if", "for", "while", "try", "catch", "function"
+  ];
 
   // Create circuit lines
   const circuitLineObjects = useMemo(() => {
@@ -45,22 +52,6 @@ export function GalaxyModel() {
       lines.push(new THREE.Line(geometry, material));
     }
     return lines;
-  }, []);
-
-  // Create data particles (binary/hex aesthetic)
-  const particleCount = 300;
-  const dataPositions = useMemo(() => {
-    const positions = new Float32Array(particleCount * 3);
-    for (let i = 0; i < particleCount; i++) {
-      const theta = Math.random() * Math.PI * 2;
-      const phi = Math.acos(2 * Math.random() - 1);
-      const radius = 3.5 + Math.random() * 1.5;
-
-      positions[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
-      positions[i * 3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
-      positions[i * 3 + 2] = radius * Math.cos(phi);
-    }
-    return positions;
   }, []);
 
   // Create data stream lines
@@ -138,7 +129,7 @@ export function GalaxyModel() {
         <mesh>
           <icosahedronGeometry args={[1.6, 32]} />
           <MeshTransmissionMaterial
-            color="#a855f7"
+            color="#06b6d4"
             transmission={0.95}
             roughness={0.05}
             thickness={0.8}
@@ -152,27 +143,27 @@ export function GalaxyModel() {
         {/* Wireframe sphere overlay - cyan glow */}
         <lineSegments>
           <edgesGeometry args={[new THREE.IcosahedronGeometry(1.6, 8)]} />
-          <lineBasicMaterial color="#06b6d4" opacity={0.3} transparent />
+          <lineBasicMaterial color="#22d3ee" opacity={0.4} transparent />
         </lineSegments>
 
         {/* Inner glowing core sphere */}
         <mesh>
           <sphereGeometry args={[0.9, 32, 32]} />
           <meshStandardMaterial
-            color="#7c3aed"
+            color="#0891b2"
             metalness={0.95}
             roughness={0.1}
-            emissive="#a855f7"
-            emissiveIntensity={1.2}
+            emissive="#06b6d4"
+            emissiveIntensity={1.3}
           />
         </mesh>
 
-        {/* Energy core glow - amber accent */}
+        {/* Energy core glow - light blue accent */}
         <mesh>
           <sphereGeometry args={[0.95, 32, 32]} />
           <meshBasicMaterial
-            color="#f59e0b"
-            opacity={0.25}
+            color="#22d3ee"
+            opacity={0.3}
             transparent
           />
         </mesh>
@@ -247,22 +238,33 @@ export function GalaxyModel() {
         />
       </mesh>
 
-      {/* Data particle field (binary aesthetic) */}
-      <points ref={dataParticlesRef}>
-        <bufferGeometry>
-          <bufferAttribute
-            attach="attributes-position"
-            args={[dataPositions, 3]}
-          />
-        </bufferGeometry>
-        <pointsMaterial
-          size={0.05}
-          color="#06b6d4"
-          transparent
-          opacity={0.6}
-          sizeAttenuation
-        />
-      </points>
+      {/* Floating code text (replaces particles) */}
+      <group ref={dataParticlesRef}>
+        {floatingCodeSnippets.map((code, i) => {
+          const theta = (i / floatingCodeSnippets.length) * Math.PI * 2;
+          const phi = Math.acos(2 * (i / floatingCodeSnippets.length) - 1);
+          const radius = 3.5 + (i % 3) * 0.5;
+
+          return (
+            <Text
+              key={i}
+              position={[
+                radius * Math.sin(phi) * Math.cos(theta),
+                radius * Math.sin(phi) * Math.sin(theta),
+                radius * Math.cos(phi),
+              ]}
+              fontSize={0.15}
+              color="#06b6d4"
+              anchorX="center"
+              anchorY="middle"
+              outlineWidth={0.01}
+              outlineColor="#0891b2"
+            >
+              {code}
+            </Text>
+          );
+        })}
+      </group>
 
       {/* Floating terminal windows */}
       {[...Array(4)].map((_, i) => {
