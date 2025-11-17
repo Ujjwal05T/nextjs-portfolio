@@ -77,11 +77,13 @@ export default function HeroSection() {
             transition={{ delay: 0.8 }}
             className="mt-8 flex flex-wrap gap-4"
           >
-            <a href="#projects" className="btn-primary">
-              View Projects
+            <a href="#projects" className="btn-primary group relative overflow-hidden">
+              <span className="relative z-10">View Projects</span>
+              <span className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-primary via-secondary to-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
             </a>
-            <Link href="/contact" className="btn-ghost">
-              Contact Me
+            <Link href="/contact" className="btn-ghost group relative overflow-hidden">
+              <span className="relative z-10">Contact Me</span>
+              <span className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-secondary via-primary to-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
             </Link>
           </motion.div>
 

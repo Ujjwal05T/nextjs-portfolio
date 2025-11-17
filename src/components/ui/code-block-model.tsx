@@ -64,69 +64,69 @@ export function GalaxyModel() {
 
   return (
     <group>
-      {/* Main glass-like blob */}
+      {/* Main glass-like blob - purple cosmic */}
       <mesh ref={blobRef} castShadow>
         <icosahedronGeometry args={[1.6, 32]} />
         <MeshTransmissionMaterial
-          color="#06b6d4"
+          color="#a855f7"
           transmission={0.95}
           roughness={0.05}
           thickness={0.8}
           ior={1.5}
-          chromaticAberration={0.06}
+          chromaticAberration={0.1}
           backside={true}
           transparent
         />
       </mesh>
 
-      {/* Wireframe overlay for structure */}
+      {/* Wireframe overlay for structure - cyan */}
       <lineSegments ref={wireframeRef} geometry={edgesGeometry}>
-        <lineBasicMaterial color="#22d3ee" opacity={0.15} transparent />
+        <lineBasicMaterial color="#06b6d4" opacity={0.2} transparent />
       </lineSegments>
 
-      {/* Inner core sphere - metallic */}
+      {/* Inner core sphere - purple metallic */}
       <mesh>
         <sphereGeometry args={[0.8, 32, 32]} />
         <meshStandardMaterial
-          color="#0e7490"
+          color="#7c3aed"
           metalness={0.95}
           roughness={0.1}
-          emissive="#155e75"
-          emissiveIntensity={0.5}
+          emissive="#a855f7"
+          emissiveIntensity={0.6}
         />
       </mesh>
 
-      {/* Energy core glow */}
+      {/* Energy core glow - amber accent */}
       <mesh>
         <sphereGeometry args={[0.85, 32, 32]} />
         <meshBasicMaterial
-          color="#22d3ee"
-          opacity={0.15}
+          color="#f59e0b"
+          opacity={0.2}
           transparent
         />
       </mesh>
 
-      {/* Architectural rings */}
+      {/* Architectural rings - cosmic colors */}
       <group ref={ringsRef}>
         <mesh rotation={[Math.PI / 2.2, 0, 0]}>
           <torusGeometry args={[2.2, 0.02, 16, 100]} />
           <meshStandardMaterial
-            color="#06b6d4"
+            color="#a855f7"
             metalness={0.9}
             roughness={0.1}
-            emissive="#0891b2"
-            emissiveIntensity={0.3}
+            emissive="#a855f7"
+            emissiveIntensity={0.4}
           />
         </mesh>
 
         <mesh rotation={[Math.PI / 1.7, Math.PI / 4, 0]}>
           <torusGeometry args={[2.5, 0.015, 16, 100]} />
           <meshStandardMaterial
-            color="#22d3ee"
+            color="#06b6d4"
             metalness={0.85}
             roughness={0.15}
             emissive="#06b6d4"
-            emissiveIntensity={0.2}
+            emissiveIntensity={0.3}
             opacity={0.8}
             transparent
           />
@@ -135,18 +135,18 @@ export function GalaxyModel() {
         <mesh rotation={[Math.PI / 3, -Math.PI / 6, Math.PI / 5]}>
           <torusGeometry args={[2.8, 0.012, 16, 100]} />
           <meshStandardMaterial
-            color="#67e8f9"
+            color="#f59e0b"
             metalness={0.8}
             roughness={0.2}
-            emissive="#22d3ee"
-            emissiveIntensity={0.15}
+            emissive="#f59e0b"
+            emissiveIntensity={0.25}
             opacity={0.6}
             transparent
           />
         </mesh>
       </group>
 
-      {/* Particle field */}
+      {/* Particle field - cosmic purple */}
       <points ref={particlesRef}>
         <bufferGeometry>
           <bufferAttribute
@@ -156,17 +156,20 @@ export function GalaxyModel() {
         </bufferGeometry>
         <pointsMaterial
           size={0.04}
-          color="#22d3ee"
+          color="#a855f7"
           transparent
-          opacity={0.6}
+          opacity={0.7}
           sizeAttenuation
         />
       </points>
 
-      {/* Accent geometric shapes */}
+      {/* Accent geometric shapes - alternating colors */}
       {[...Array(6)].map((_, i) => {
         const angle = (i / 6) * Math.PI * 2;
         const radius = 3.2;
+        const colors = ["#a855f7", "#06b6d4", "#f59e0b"];
+        const emissiveColors = ["#7c3aed", "#0891b2", "#d97706"];
+        const colorIndex = i % 3;
 
         return (
           <mesh
@@ -177,24 +180,24 @@ export function GalaxyModel() {
               Math.sin(angle) * radius,
             ]}
           >
-            <octahedronGeometry args={[0.06, 0]} />
+            <octahedronGeometry args={[0.08, 0]} />
             <meshStandardMaterial
-              color="#06b6d4"
+              color={colors[colorIndex]}
               metalness={0.9}
               roughness={0.1}
-              emissive="#0e7490"
-              emissiveIntensity={0.4}
+              emissive={emissiveColors[colorIndex]}
+              emissiveIntensity={0.5}
             />
           </mesh>
         );
       })}
 
-      {/* Subtle orbital indicators */}
+      {/* Subtle orbital indicators - cosmic gradient */}
       <mesh rotation={[Math.PI / 2, 0, 0]}>
         <ringGeometry args={[3.0, 3.02, 64]} />
         <meshBasicMaterial
-          color="#06b6d4"
-          opacity={0.08}
+          color="#a855f7"
+          opacity={0.1}
           transparent
           side={THREE.DoubleSide}
         />
@@ -203,8 +206,8 @@ export function GalaxyModel() {
       <mesh rotation={[Math.PI / 2, 0, 0]}>
         <ringGeometry args={[3.5, 3.52, 64]} />
         <meshBasicMaterial
-          color="#22d3ee"
-          opacity={0.05}
+          color="#06b6d4"
+          opacity={0.06}
           transparent
           side={THREE.DoubleSide}
         />
