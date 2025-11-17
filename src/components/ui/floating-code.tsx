@@ -102,7 +102,7 @@ export function FloatingCode() {
             key={snippet.id}
             initial={{ opacity: 0, y: 0 }}
             animate={{
-              opacity: [0, 1, 1, 0],
+              opacity: [0, 0.15, 0.15, 0],
               y: [0, -150, -150, -300],
               x: [0, Math.random() * 40 - 20, Math.random() * 60 - 30, Math.random() * 80 - 40],
               rotate: [0, Math.random() * 10 - 5, Math.random() * 15 - 7.5, Math.random() * 20 - 10],
@@ -118,13 +118,12 @@ export function FloatingCode() {
               left: `${snippet.x}%`,
               top: `${snippet.y}%`,
             }}
-            className="font-mono text-lg sm:text-xl font-bold select-none drop-shadow-lg"
+            className="font-mono text-xs sm:text-sm font-medium select-none"
           >
             <span
               style={{
                 color: snippet.color,
-                textShadow: `0 0 10px ${snippet.color}, 0 0 20px ${snippet.color}80, 0 2px 4px rgba(0,0,0,0.8)`,
-                filter: "drop-shadow(0 0 2px rgba(0,0,0,0.9))",
+                textShadow: `0 0 4px ${snippet.color}40, 0 1px 2px rgba(0,0,0,0.3)`,
               }}
             >
               {snippet.code}
