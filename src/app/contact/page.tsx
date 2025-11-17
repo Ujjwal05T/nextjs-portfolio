@@ -59,13 +59,13 @@ export default function ContactPage() {
       name: "Email",
       icon: <FaEnvelope size={20} />,
       href: "mailto:utamrakar3@gmail.com",
-      color: "from-yellow-500 to-red-500",
+      color: "from-amber-500 to-orange-500",
     },
     {
       name: "LinkedIn",
       icon: <FaLinkedin size={20} />,
       href: "http://www.linkedin.com/in/ujjwal-tamrakar",
-      color: "from-blue-500 to-blue-700",
+      color: "from-cyan-500 to-cyan-700",
     },
     {
       name: "GitHub",
@@ -77,7 +77,7 @@ export default function ContactPage() {
       name: "Twitter",
       icon: <FaTwitter size={20} />,
       href: "https://twitter.com/TamrkarUjjwal",
-      color: "from-sky-400 to-blue-600",
+      color: "from-purple-500 to-purple-700",
     },
   ];
 
@@ -129,9 +129,9 @@ export default function ContactPage() {
             className="relative bg-zinc-900/40 backdrop-blur-xl border border-white/5 rounded-xl p-5 sm:p-6 lg:w-2/3 hover:border-primary/30 transition-all duration-500 shadow-xl shadow-zinc-900/50 hover:shadow-2xl hover:shadow-primary/10"
           >
             {/* Glassmorphism gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/20 via-transparent to-blue-900/10 rounded-xl pointer-events-none"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 rounded-xl pointer-events-none"></div>
             <div className="relative z-10">
-            <h2 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">Send Me a Message</h2>
+            <h2 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-gradient">Send Me a Message</h2>
             
             <form onSubmit={handleSubmit} 
             action="https://formspree.io/f/xdkeaawn" 
@@ -244,7 +244,7 @@ export default function ContactPage() {
             className="relative bg-zinc-900/40 backdrop-blur-xl border border-white/5 rounded-xl p-5 sm:p-6 lg:w-1/3 hover:border-primary/30 transition-all duration-500 shadow-xl shadow-zinc-900/50"
           >
             {/* Glassmorphism gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/20 via-transparent to-purple-900/10 rounded-xl pointer-events-none"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 via-transparent to-primary/10 rounded-xl pointer-events-none"></div>
             <div className="relative z-10">
             <div className="flex flex-col h-full justify-center">
               <div className="mb-6 flex items-center">

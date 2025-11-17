@@ -53,7 +53,7 @@ export default function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="text-xl sm:text-2xl md:text-3xl font-medium mb-4 text-gradient-mint"
+            className="text-xl sm:text-2xl md:text-3xl font-medium mb-4 text-gradient"
           >
             Full-Stack Developer — React · Next.js · Three.js
           </motion.h2>
@@ -90,20 +90,29 @@ export default function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.0 }}
-            className="mt-12 grid grid-cols-3 gap-6 max-w-xl"
+            className="mt-12 grid grid-cols-3 gap-4 sm:gap-6 max-w-xl"
           >
-            <div className="text-center md:text-left">
-              <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">2+</div>
+            <motion.div
+              whileHover={{ scale: 1.05, y: -4 }}
+              className="text-center md:text-left p-4 rounded-xl backdrop-blur-sm border border-white/5 bg-white/[0.02] hover:border-primary/30 transition-all duration-300"
+            >
+              <div className="text-2xl sm:text-3xl font-bold text-gradient mb-1">2+</div>
               <div className="text-xs sm:text-sm text-muted-foreground">Years Experience</div>
-            </div>
-            <div className="text-center md:text-left">
-              <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">10+</div>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05, y: -4 }}
+              className="text-center md:text-left p-4 rounded-xl backdrop-blur-sm border border-white/5 bg-white/[0.02] hover:border-secondary/30 transition-all duration-300"
+            >
+              <div className="text-2xl sm:text-3xl font-bold text-gradient mb-1">10+</div>
               <div className="text-xs sm:text-sm text-muted-foreground">Projects Completed</div>
-            </div>
-            <div className="text-center md:text-left">
-              <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">24-48h</div>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05, y: -4 }}
+              className="text-center md:text-left p-4 rounded-xl backdrop-blur-sm border border-white/5 bg-white/[0.02] hover:border-primary/30 transition-all duration-300"
+            >
+              <div className="text-2xl sm:text-3xl font-bold text-gradient mb-1">24-48h</div>
               <div className="text-xs sm:text-sm text-muted-foreground">Response Time</div>
-            </div>
+            </motion.div>
           </motion.div>
         </motion.div>
 
@@ -127,18 +136,18 @@ export default function HeroSection() {
                 color="#ffffff"
               />
 
-              {/* Rim lights for depth - mint accent */}
+              {/* Rim lights for depth - purple accent */}
               <directionalLight
                 position={[-5, 3, -5]}
                 intensity={0.8}
-                color="#6EE7B7"
+                color="#a855f7"
               />
 
-              {/* Fill light from below - soft blue */}
+              {/* Fill light from below - soft cyan */}
               <directionalLight
                 position={[0, -3, 3]}
                 intensity={0.5}
-                color="#60A5FA"
+                color="#06b6d4"
               />
 
               {/* Spotlight for dramatic effect */}
@@ -147,7 +156,7 @@ export default function HeroSection() {
                 angle={0.6}
                 penumbra={0.5}
                 intensity={0.8}
-                color="#6EE7B7"
+                color="#a855f7"
                 castShadow={false}
               />
 

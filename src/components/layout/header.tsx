@@ -72,21 +72,22 @@ export default function Header() {
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           className={cn(
-            "hidden md:flex fixed top-4 inset-x-0 max-w-fit mx-auto border border-primary/30 rounded-full bg-background/80 backdrop-blur-xl z-[100] px-3 py-2 shadow-lg items-center gap-4",
-            scrolled ? "border-primary/50 shadow-xl" : ""
+            "hidden md:flex fixed top-4 inset-x-0 max-w-fit mx-auto border border-white/10 rounded-full backdrop-blur-xl z-[100] px-3 py-2",
+            "bg-gradient-to-b from-white/5 to-transparent",
+            scrolled ? "border-primary/30 shadow-[0_8px_32px_rgba(168,85,247,0.15)]" : ""
           )}
         >
-          <nav className="flex justify-center space-x-1 sm:space-x-2 md:space-x-4">
+          <nav className="flex justify-center space-x-1">
             {NavItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.link}
                 onClick={() => setActiveItem(item.link)}
                 className={cn(
-                  "relative px-4 sm:px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300",
+                  "relative px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300",
                   activeItem === item.link
                     ? "text-white"
-                    : "text-muted-foreground hover:text-primary"
+                    : "text-zinc-400 hover:text-white"
                 )}
               >
                 {activeItem === item.link && (
@@ -97,34 +98,18 @@ export default function Header() {
                       bounce: 0.25,
                       duration: 0.5,
                     }}
-                    className="absolute inset-0 bg-primary/10 rounded-full border border-primary/30"
-                    style={{ zIndex: -1 }}
+                    className="absolute inset-0 rounded-full"
+                    style={{
+                      zIndex: -1,
+                      background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(6, 182, 212, 0.2))',
+                      boxShadow: '0 0 20px rgba(168, 85, 247, 0.3)'
+                    }}
                   />
                 )}
                 <span className="relative z-10">{item.name}</span>
-
-                {/* Active indicator dot */}
-                {activeItem === item.link && (
-                  <motion.div
-                    layoutId="active-dot"
-                    className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary rounded-full"
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                )}
               </Link>
             ))}
           </nav>
-
-          {/* Download Resume CTA */}
-          <a
-            href="/Resume.pdf"
-            download="Ujjwal_Tamrakar_Resume.pdf"
-            className="btn-outline-pill whitespace-nowrap"
-          >
-            Download Resume
-          </a>
         </motion.div>
 
         {/* Mobile Menu Button */}
