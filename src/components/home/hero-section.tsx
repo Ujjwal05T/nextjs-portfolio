@@ -55,7 +55,7 @@ export default function HeroSection() {
             transition={{ delay: 0.4 }}
             className="text-xl sm:text-2xl md:text-3xl font-medium mb-4 text-gradient"
           >
-            Full-Stack Developer — React · Next.js · Three.js
+            Full-Stack Developer
           </motion.h2>
 
           {/* Summary */}
@@ -66,7 +66,7 @@ export default function HeroSection() {
             className="mt-4 sm:mt-6 max-w-xl"
           >
             <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
-              I design and build production-grade web applications focused on performance, accessibility and delightful micro-interactions.
+              I build innovative full stack web solutions using modern frameworks and cloud technologies.
             </p>
           </motion.div>
 
@@ -98,7 +98,7 @@ export default function HeroSection() {
               whileHover={{ scale: 1.05, y: -4 }}
               className="text-center md:text-left p-4 rounded-xl backdrop-blur-sm border border-white/5 bg-white/[0.02] hover:border-primary/30 transition-all duration-300"
             >
-              <div className="text-2xl sm:text-3xl font-bold text-gradient mb-1">2+</div>
+              <div className="text-2xl sm:text-3xl font-bold text-gradient mb-1">1+</div>
               <div className="text-xs sm:text-sm text-muted-foreground">Years Experience</div>
             </motion.div>
             <motion.div

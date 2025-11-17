@@ -44,14 +44,14 @@ export default function AboutPage() {
         </motion.div>
 
         {/* Two-column layout */}
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-18">
           {/* Left column - Bio Description */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6 }}
-            className="space-y-6"
+            className="space-y-6 sm:ml-16"
           >
             <div className="space-y-4">
               <p className="text-muted-foreground text-lg leading-relaxed">
@@ -77,7 +77,7 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-8"
+            className="space-y-8 sm:ml-16 sm:pl-16"
           >
             {/* Education Section */}
             <div>
