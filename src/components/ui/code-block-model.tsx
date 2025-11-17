@@ -130,11 +130,11 @@ export function GalaxyModel() {
           <icosahedronGeometry args={[1.6, 32]} />
           <MeshTransmissionMaterial
             color="#06b6d4"
-            transmission={0.95}
-            roughness={0.05}
-            thickness={0.8}
-            ior={1.5}
-            chromaticAberration={0.12}
+            transmission={0.85}
+            roughness={0.3}
+            thickness={0.5}
+            ior={1.3}
+            chromaticAberration={0.08}
             backside={true}
             transparent
           />
@@ -143,7 +143,7 @@ export function GalaxyModel() {
         {/* Wireframe sphere overlay - cyan glow */}
         <lineSegments>
           <edgesGeometry args={[new THREE.IcosahedronGeometry(1.6, 8)]} />
-          <lineBasicMaterial color="#22d3ee" opacity={0.4} transparent />
+          <lineBasicMaterial color="#22d3ee" opacity={0.3} transparent />
         </lineSegments>
 
         {/* Inner glowing core sphere */}
@@ -151,10 +151,10 @@ export function GalaxyModel() {
           <sphereGeometry args={[0.9, 32, 32]} />
           <meshStandardMaterial
             color="#0891b2"
-            metalness={0.95}
-            roughness={0.1}
+            metalness={0.5}
+            roughness={0.4}
             emissive="#06b6d4"
-            emissiveIntensity={1.3}
+            emissiveIntensity={0.8}
           />
         </mesh>
 
@@ -163,7 +163,7 @@ export function GalaxyModel() {
           <sphereGeometry args={[0.95, 32, 32]} />
           <meshBasicMaterial
             color="#22d3ee"
-            opacity={0.3}
+            opacity={0.2}
             transparent
           />
         </mesh>
@@ -253,12 +253,12 @@ export function GalaxyModel() {
                 radius * Math.sin(phi) * Math.sin(theta),
                 radius * Math.cos(phi),
               ]}
-              fontSize={0.15}
+              fontSize={0.25}
               color="#06b6d4"
               anchorX="center"
               anchorY="middle"
-              outlineWidth={0.01}
-              outlineColor="#0891b2"
+              outlineWidth={0.02}
+              outlineColor="#0a0a0f"
             >
               {code}
             </Text>
@@ -299,27 +299,6 @@ export function GalaxyModel() {
       {dataStreamLines.map((lineObject, i) => (
         <primitive key={`stream-${i}`} object={lineObject} />
       ))}
-
-      {/* Outer orbital rings - tech aesthetic */}
-      <mesh rotation={[Math.PI / 2, 0, 0]}>
-        <ringGeometry args={[3.2, 3.22, 64]} />
-        <meshBasicMaterial
-          color="#a855f7"
-          opacity={0.2}
-          transparent
-          side={THREE.DoubleSide}
-        />
-      </mesh>
-
-      <mesh rotation={[Math.PI / 2.5, Math.PI / 4, 0]}>
-        <ringGeometry args={[3.6, 3.62, 64]} />
-        <meshBasicMaterial
-          color="#06b6d4"
-          opacity={0.15}
-          transparent
-          side={THREE.DoubleSide}
-        />
-      </mesh>
     </group>
   );
 }
