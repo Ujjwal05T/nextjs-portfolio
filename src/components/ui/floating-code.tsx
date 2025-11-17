@@ -60,11 +60,11 @@ const codeSnippets = [
 ];
 
 const colors = [
-  "rgba(168, 85, 247, 0.4)", // purple
-  "rgba(6, 182, 212, 0.4)",  // cyan
-  "rgba(245, 158, 11, 0.3)", // amber
-  "rgba(139, 92, 246, 0.35)", // violet
-  "rgba(34, 211, 238, 0.35)", // cyan-light
+  "rgba(168, 85, 247, 0.8)", // purple
+  "rgba(6, 182, 212, 0.7)",  // cyan
+  "rgba(245, 158, 11, 0.6)", // amber
+  "rgba(139, 92, 246, 0.7)", // violet
+  "rgba(34, 211, 238, 0.7)", // cyan-light
 ];
 
 export function FloatingCode() {
@@ -95,15 +95,15 @@ export function FloatingCode() {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden z-[1]">
+    <div className="fixed inset-0 pointer-events-none overflow-hidden z-[5]">
       <AnimatePresence>
         {snippets.map((snippet) => (
           <motion.div
             key={snippet.id}
             initial={{ opacity: 0, y: 0 }}
             animate={{
-              opacity: [0, 0.6, 0.6, 0],
-              y: [0, -100, -100, -200],
+              opacity: [0, 0.8, 0.8, 0],
+              y: [0, -150, -150, -300],
               x: [0, Math.random() * 40 - 20, Math.random() * 60 - 30, Math.random() * 80 - 40],
               rotate: [0, Math.random() * 10 - 5, Math.random() * 15 - 7.5, Math.random() * 20 - 10],
             }}
@@ -118,12 +118,12 @@ export function FloatingCode() {
               left: `${snippet.x}%`,
               top: `${snippet.y}%`,
             }}
-            className="font-mono text-xs sm:text-sm select-none"
+            className="font-mono text-sm sm:text-base font-semibold select-none"
           >
             <span
               style={{
                 color: snippet.color,
-                textShadow: `0 0 10px ${snippet.color}`,
+                textShadow: `0 0 20px ${snippet.color}, 0 0 30px ${snippet.color}`,
               }}
             >
               {snippet.code}
